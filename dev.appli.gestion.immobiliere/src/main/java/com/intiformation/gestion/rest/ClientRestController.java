@@ -49,16 +49,13 @@ public class ClientRestController {
 	 * @return
 	 */
 	@RequestMapping(value="/clients/{clientId}",method=RequestMethod.GET)
-	public ResponseEntity<Client> getClientById (@PathVariable("clientId")int id) {
-		Client client=agenceMetier.getClientbyId(id);
+	public Client getClientById (@PathVariable("clientId")int id) {
+		agenceMetier.getClientbyId(id);
 		
-		if (client != null) {
-			//renvoie de la classeStd avec un code 200
-			return new ResponseEntity<>(client,HttpStatus.OK );              
+		             
 		
-		}//fin de if 
-		//ds le cas ou l'id de la classe n'existe pas renvoie d'un statut 404 NOT-FOUND
-		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	
+		return agenceMetier.getClientbyId(id);
 		
 	}//getClasseStdById
 	
@@ -88,10 +85,9 @@ public class ClientRestController {
     /**
      * deleteClient
      */
-    
-    public ResponseEntity<Boolean> deleteClient(@PathVariable("client")int id){
-    	agenceMetier.supprimerClient(id);
-    return new ResponseEntity<Boolean>(Boolean.TRUE, HttpStatus.OK);
+    public void deleteClient(@PathVariable("client")int id){
+    	
+    agenceMetier.supprimerClient(id);
     }//fin deleteClient
     
 
