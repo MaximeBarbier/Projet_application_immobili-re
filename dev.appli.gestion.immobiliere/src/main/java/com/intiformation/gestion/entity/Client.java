@@ -54,6 +54,22 @@ public class Client extends Personne{
 		super.setTelephone(telephone);
 	}
 
+	public List<ClasseStd> getListeClasses() {
+		return listeClasses;
+	}
+
+	public void setListeClasses(List<ClasseStd> listeClasses) {
+		this.listeClasses = listeClasses;
+	}
+
+	public Contrat getContrat() {
+		return contrat;
+	}
+
+	public void setContrat(Contrat contrat) {
+		this.contrat = contrat;
+	}
+
 	@Override
 	public String toString() {
 		return super.toString();
@@ -88,7 +104,5 @@ public class Client extends Personne{
 	public Client(String nom, String adresse, String telephone) {
 		super(nom, adresse, telephone);
 	}
-	
-	
 
 }

@@ -20,6 +20,14 @@
 			<scope>test</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-core</artifactId>
+			<version>1.3</version>
+			<scope>test</scope>
+		</dependency>
+
+
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<dependency>
 			<groupId>mysql</groupId>
@@ -130,5 +138,5 @@
 	<build>
 		<finalName>dev.appli.gestion.immobiliere</finalName>
 	</build>
-	
+
 </project>

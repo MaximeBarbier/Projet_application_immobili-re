@@ -57,14 +57,13 @@ public class BienImmobilier implements Serializable{
 	
 	@ManyToOne
 	@JoinColumn(name="classestd_id", referencedColumnName="id_classestd")
-	private ClasseStd typeDeBien;
+	private ClasseStd classeStd;
 	
 	@ManyToOne
 	@JoinColumn(name="personne_id", referencedColumnName="id_personne")
 	private Proprietaire proprietaire;
 	
 	@OneToMany(mappedBy="bienImmobilier")
-	@JoinColumn(name="bien_id")
 	private List<Visite> listeVisites;
 	
 	@OneToOne(mappedBy="bienImmobilier")
@@ -229,12 +228,12 @@ public class BienImmobilier implements Serializable{
 		this.listeClients = listeClients;
 	}
 
-	public ClasseStd getTypeDeBien() {
-		return typeDeBien;
+	public ClasseStd getClasseStd() {
+		return classeStd;
 	}
 
-	public void setTypeDeBien(ClasseStd typeDeBien) {
-		this.typeDeBien = typeDeBien;
+	public void setClasseStd(ClasseStd classeStd) {
+		this.classeStd = classeStd;
 	}
 
 	public Proprietaire getProprietaire() {
@@ -266,8 +265,8 @@ public class BienImmobilier implements Serializable{
 		return "BienImmobilier [id=" + id + ", statut=" + statut + ", dateSoumis=" + dateSoumis + ", localisation="
 				+ localisation + ", dateDisposition=" + dateDisposition + ", revenuCadastral=" + revenuCadastral
 				+ ", coordonneesClientAc=" + coordonneesClientAc + ", prixLoc=" + prixLoc + ", dateLoc=" + dateLoc
-				+ ", refContrat=" + refContrat + ", listeClients=" + listeClients + ", typeDeBien=" + typeDeBien
+				+ ", refContrat=" + refContrat + ", listeClients=" + listeClients + ", classeStd=" + classeStd
 				+ ", proprietaire=" + proprietaire + ", listeVisites=" + listeVisites + ", contrat=" + contrat + "]";
 	}
-	
+
 }

@@ -42,7 +42,6 @@ public class Agent implements Serializable{
 	private String password;
 	
 	@OneToMany(mappedBy="agent")
-	@JoinColumn(name="agent_id")
 	private List<Visite> listeVisites;
 	
 	/*____________________________________________ctor__________________________________________________*/

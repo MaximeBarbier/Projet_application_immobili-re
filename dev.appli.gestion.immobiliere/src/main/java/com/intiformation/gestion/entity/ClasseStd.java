@@ -40,11 +40,10 @@ public class ClasseStd implements Serializable{
 	@Column(name="superficie_minimum")
 	private double superficieMin;
 	
-	@Column(name="type_Classe")
+	@Column(name="type_Classe", insertable = false, updatable = false)
 	private String typeClasse;
 	
-	@OneToMany(mappedBy="class")
-	@JoinColumn(name="classestd_id")
+	@OneToMany(mappedBy="classeStd")
 	private List<BienImmobilier> listeBienImmobiliers;
 	
 	/*____________________________________________ctor__________________________________________________*/

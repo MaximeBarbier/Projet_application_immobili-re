@@ -15,7 +15,6 @@ public class Proprietaire extends Personne {
 	private long tel_travail;
 	
 	@OneToMany(mappedBy="proprietaire")
-	@JoinColumn(name="personne_id")
 	private List<BienImmobilier> listeBiens;
 
 	/* Import des champs hérités de la classe Personne */

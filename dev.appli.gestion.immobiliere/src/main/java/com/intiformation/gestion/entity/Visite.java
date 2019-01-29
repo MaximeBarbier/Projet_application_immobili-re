@@ -37,7 +37,7 @@ public class Visite implements Serializable{
 	
 	@ManyToOne
 	@JoinColumn(name="bien_id", referencedColumnName="id_bien")
-	private BienImmobilier bien;
+	private BienImmobilier bienImmobilier;
 	
 	/*____________________________________________ctor__________________________________________________*/
 	
@@ -124,17 +124,18 @@ public class Visite implements Serializable{
 		this.agent = agent;
 	}
 
-	public BienImmobilier getBien() {
-		return bien;
+	public BienImmobilier getBienImmobilier() {
+		return bienImmobilier;
 	}
 
-	public void setBien(BienImmobilier bien) {
-		this.bien = bien;
+	public void setBienImmobilier(BienImmobilier bienImmobilier) {
+		this.bienImmobilier = bienImmobilier;
 	}
 
 	@Override
 	public String toString() {
-		return "Visite [id=" + id + ", date_disite=" + date_disite + ", horaire_visite=" + horaire_visite + "]";
+		return "Visite [id=" + id + ", date_disite=" + date_disite + ", horaire_visite=" + horaire_visite + ", agent="
+				+ agent + ", bienImmobilier=" + bienImmobilier + "]";
 	}
-	
+
 }

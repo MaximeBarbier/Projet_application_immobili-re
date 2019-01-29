@@ -21,7 +21,10 @@ public class Contrat implements Serializable {
 	private int ref_contrat;
 	
 	@OneToOne
-	private BienImmobilier bien;
+	private Client client;
+	
+	@OneToOne
+	private BienImmobilier bienImmobilier;
 	
 	/* ctors */
 	/**
@@ -50,12 +53,26 @@ public class Contrat implements Serializable {
 		this.ref_contrat = ref_contrat;
 	}
 
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
+	public BienImmobilier getBienImmobilier() {
+		return bienImmobilier;
+	}
+
+	public void setBienImmobilier(BienImmobilier bienImmobilier) {
+		this.bienImmobilier = bienImmobilier;
+	}
+
 	/*  Méthode toString() */
 	@Override
 	public String toString() {
 		return "Contrat [ref_contrat=" + ref_contrat + "]";
 	}
-	
-	
 	
 }

@@ -166,7 +166,7 @@ public class AgenceDAO implements IAgenceDAO {
 
 	public int ajouterVisite(Visite v, int idBi) {
 		BienImmobilier bi = em.find(BienImmobilier.class, idBi);
-		v.setBien(bi);
+		v.setBienImmobilier(bi);
 		em.persist(v);
 		return v.getId();
 	}
