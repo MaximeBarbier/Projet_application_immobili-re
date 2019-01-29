@@ -1,21 +1,27 @@
 package com.intiformation.gestion.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity(name="contrat")
 @Table(name="Contrat")
-public class Contrat {
+public class Contrat implements Serializable {
 
 	/* Déclaration des champs */
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="reference_contrat")
 	private int ref_contrat;
+	
+	@OneToOne
+	private BienImmobilier bien;
 	
 	/* ctors */
 	/**

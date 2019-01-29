@@ -1,11 +1,21 @@
 package com.intiformation.gestion.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity(name="client")
 @Table(name="client")
 public class Client extends Personne{
+	
+	@OneToMany
+	private List<ClasseStd> listeClasses;
+	
+	@OneToOne(mappedBy="client")
+	private Contrat contrat;
 
 	/* Import des champs hérités de la classe Personne */
 	@Override

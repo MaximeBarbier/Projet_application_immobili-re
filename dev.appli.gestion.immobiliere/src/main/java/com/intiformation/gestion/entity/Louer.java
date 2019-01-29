@@ -1,11 +1,13 @@
 package com.intiformation.gestion.entity;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity(name="louer")
 @Table(name="louer")
+@DiscriminatorValue("louer")
 //@NamedQueries({@NamedQuery(name="Louer.findAll",query="SELECT l FROM louer l")})
 public class Louer extends ClasseStd{
 	

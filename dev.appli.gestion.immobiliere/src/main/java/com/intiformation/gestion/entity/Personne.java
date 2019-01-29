@@ -1,20 +1,20 @@
 package com.intiformation.gestion.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.MappedSuperclass;
 
-@Entity(name="personne")
-@Table(name="Personne")
-public class Personne {
+@MappedSuperclass
+public class Personne implements Serializable{
 	
 	/* Déclaration des propriétés */
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="idPersonne")
+	@Column(name="id_personne")
 	private int id;
 	
 	@Column(name="nom")

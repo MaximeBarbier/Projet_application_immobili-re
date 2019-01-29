@@ -1,18 +1,23 @@
 package com.intiformation.gestion.entity;
 
+import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity(name="agent")
 @Table(name="agents")
 //@NamedQueries({@NamedQuery(name="Agent.findAll",query="SELECT a FROM agent a")})
-public class Agent {
+public class Agent implements Serializable{
 	
 	/*____________________________________________Attributs_____________________________________________*/
 	
@@ -35,6 +40,10 @@ public class Agent {
 	
 	@Column(name="password")
 	private String password;
+	
+	@OneToMany(mappedBy="agent")
+	@JoinColumn(name="agent_id")
+	private List<Visite> listeVisites;
 	
 	/*____________________________________________ctor__________________________________________________*/
 	

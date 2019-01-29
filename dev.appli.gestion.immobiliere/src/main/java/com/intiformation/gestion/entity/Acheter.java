@@ -1,6 +1,7 @@
 package com.intiformation.gestion.entity;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -8,6 +9,7 @@ import javax.persistence.Table;
 
 @Entity(name = "buy")
 @Table(name = "acheter")
+@DiscriminatorValue("acheter")
 // @NamedQueries({@NamedQuery(name="Acheter.findAll",query="SELECT b FROM buy
 // b")})
 public class Acheter extends ClasseStd {

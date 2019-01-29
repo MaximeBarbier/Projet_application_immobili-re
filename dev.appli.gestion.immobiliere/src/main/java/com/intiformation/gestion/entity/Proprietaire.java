@@ -1,6 +1,10 @@
 package com.intiformation.gestion.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity(name="proprietaire")
@@ -9,6 +13,10 @@ public class Proprietaire extends Personne {
 
 	/* Déclaration des champs de la classe */
 	private long tel_travail;
+	
+	@OneToMany(mappedBy="proprietaire")
+	@JoinColumn(name="personne_id")
+	private List<BienImmobilier> listeBiens;
 
 	/* Import des champs hérités de la classe Personne */
 	@Override

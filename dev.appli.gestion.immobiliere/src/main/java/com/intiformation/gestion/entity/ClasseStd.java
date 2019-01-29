@@ -1,35 +1,51 @@
 package com.intiformation.gestion.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.Columns;
 
 @Entity(name="class")
 @Table(name="classesStd")
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="type_Classe")
 //@NamedQueries({@NamedQuery(name="ClasseStd.findAll",query="SELECT c from class c")})
-public class ClasseStd {
+public class ClasseStd implements Serializable{
 	
 	/*____________________________________________Attributs__________________________________________________*/
 	
 	@Id
-	@Column(name="code")
+	@Column(name="id_classestd")
 	private String Code;
+	
 	@Column(name="type")
 	private String type;
+	
 	@Column(name="mode_offre")
 	private boolean modeOffre;
+	
 	@Column(name="prix_maximum")
 	private double prixMax; 
+	
 	@Column(name="superficie_minimum")
 	private double superficieMin;
-	private List<String> listeBienImmobiliers;
+	
+	@Column(name="type_Classe")
+	private String typeClasse;
+	
+	@OneToMany(mappedBy="class")
+	@JoinColumn(name="classestd_id")
+	private List<BienImmobilier> listeBienImmobiliers;
 	
 	/*____________________________________________ctor__________________________________________________*/
 	
@@ -49,8 +65,8 @@ public class ClasseStd {
 	 * @param listeBienImmobiliers
 	 */
 	
-	public ClasseStd(java.lang.String type, boolean modeOffre, double prixMax, double superficieMin,
-			List<java.lang.String> listeBienImmobiliers) {
+	public ClasseStd(String type, boolean modeOffre, double prixMax, double superficieMin,
+			List<BienImmobilier> listeBienImmobiliers) {
 		super();
 		this.type=type;
 		this.modeOffre = modeOffre;
@@ -71,8 +87,8 @@ public class ClasseStd {
 	
 	/*____________________________________________get/set/string__________________________________________________*/
 	
-	public ClasseStd(java.lang.String code, java.lang.String string, boolean modeOffre, double prixMax,
-			double superficieMin, List<java.lang.String> listeBienImmobiliers) {
+	public ClasseStd(String code, String type, boolean modeOffre, double prixMax,
+			double superficieMin, List<BienImmobilier> listeBienImmobiliers) {
 		super();
 		Code = code;
 		this.type=type;
@@ -155,24 +171,38 @@ public class ClasseStd {
 	/**
 	 * @return the listeBienImmobiliers
 	 */
-	public List<String> getListeBienImmobiliers() {
+	public List<BienImmobilier> getListeBienImmobiliers() {
 		return listeBienImmobiliers;
 	}
 
 	/**
 	 * @param listeBienImmobiliers the listeBienImmobiliers to set
 	 */
-	public void setListeBienImmobiliers(List<String> listeBienImmobiliers) {
+	public void setListeBienImmobiliers(List<BienImmobilier> listeBienImmobiliers) {
 		this.listeBienImmobiliers = listeBienImmobiliers;
 	}
-
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "ClasseStd [Code=" + Code + ", String=" + type + ", modeOffre=" + modeOffre + ", prixMax=" + prixMax
-				+ ", superficieMin=" + superficieMin + ", listeBienImmobiliers=" + listeBienImmobiliers + "]";
+	
+	public String getType() {
+		return type;
 	}
 
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getTypeClasse() {
+		return typeClasse;
+	}
+
+	public void setTypeClasse(String typeClasse) {
+		this.typeClasse = typeClasse;
+	}
+
+	@Override
+	public String toString() {
+		return "ClasseStd [Code=" + Code + ", type=" + type + ", modeOffre=" + modeOffre + ", prixMax=" + prixMax
+				+ ", superficieMin=" + superficieMin + ", typeClasse=" + typeClasse + ", listeBienImmobiliers="
+				+ listeBienImmobiliers + "]";
+	}
+	
 }

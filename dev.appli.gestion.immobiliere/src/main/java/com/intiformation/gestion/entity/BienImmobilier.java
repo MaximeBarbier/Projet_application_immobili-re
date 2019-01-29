@@ -1,7 +1,7 @@
 package com.intiformation.gestion.entity;
 
+import java.io.Serializable;
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -9,25 +9,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity(name="bienImmobilier")
 @Table(name="Bien_immobilier")
-public class BienImmobilier {
-
-	// Déclaration de client
-	private Client client;
-	
-
-	public Client getClient() {
-		return client;
-	}
-
-
-	public void setClient(Client client) {
-		this.client = client;
-	}
-
+public class BienImmobilier implements Serializable{
 
 	/* Déclaration des propriétés */
 	@Id
@@ -39,31 +29,46 @@ public class BienImmobilier {
 	private boolean statut;
 	
 	@Column(name="date_de_soumission")
-	private Date date_soumis;
+	private Date dateSoumis;
 	
 	@Column(name="localisation")
 	private String localisation;
 	
 	@Column(name="date_de_mise_à_disposition")
-	private Date date_disposition;
+	private Date dateDisposition;
 	
 	@Column(name="revenu_cadastral")
-	private double revenu_cadastral;
+	private double revenuCadastral;
 	
-	@Column(name="coordonnées_de_acquereur")
-	private String coordonnees_client_ac;
+	@Column(name="coordonnées_client_acquereur")
+	private String coordonneesClientAc;
 	
 	@Column(name="prix_de_location")
-	private double prix_loc;
+	private double prixLoc;
 	
 	@Column(name="date_de_location")
-	private Date date_loc;
+	private Date dateLoc;
 	
 	@Column(name="reference_contrat")
-	private int ref_contrat;
-	
+	private int refContrat;
+		
 	@Column(name="liste_des_clients")
 	private List<Client> listeClients;
+	
+	@ManyToOne
+	@JoinColumn(name="classestd_id", referencedColumnName="id_classestd")
+	private ClasseStd typeDeBien;
+	
+	@ManyToOne
+	@JoinColumn(name="personne_id", referencedColumnName="id_personne")
+	private Proprietaire proprietaire;
+	
+	@OneToMany(mappedBy="bienImmobilier")
+	@JoinColumn(name="bien_id")
+	private List<Visite> listeVisites;
+	
+	@OneToOne(mappedBy="bienImmobilier")
+	private Contrat contrat;
 	
 	/* ctors */
 	/**
@@ -73,7 +78,6 @@ public class BienImmobilier {
 		super();
 	}
 
-	
 	/**
 	 * ctor chargé sans id
 	 * @param client
@@ -88,20 +92,19 @@ public class BienImmobilier {
 	 * @param ref_contrat
 	 * @param listeClients
 	 */
-	public BienImmobilier(Client client, boolean statut, Date date_soumis, String localisation, Date date_disposition,
+	public BienImmobilier(boolean statut, Date date_soumis, String localisation, Date date_disposition,
 			double revenu_cadastral, String coordonnees_client_ac, double prix_loc, Date date_loc, int ref_contrat,
 			List<Client> listeClients) {
 		super();
-		this.client = client;
 		this.statut = statut;
-		this.date_soumis = date_soumis;
+		this.dateSoumis = date_soumis;
 		this.localisation = localisation;
-		this.date_disposition = date_disposition;
-		this.revenu_cadastral = revenu_cadastral;
-		this.coordonnees_client_ac = coordonnees_client_ac;
-		this.prix_loc = prix_loc;
-		this.date_loc = date_loc;
-		this.ref_contrat = ref_contrat;
+		this.dateDisposition = date_disposition;
+		this.revenuCadastral = revenu_cadastral;
+		this.coordonneesClientAc = coordonnees_client_ac;
+		this.prixLoc = prix_loc;
+		this.dateLoc = date_loc;
+		this.refContrat = ref_contrat;
 		this.listeClients = listeClients;
 	}
 
@@ -125,14 +128,14 @@ public class BienImmobilier {
 			Date date_loc, int ref_contrat, List<Client> listeClients) {
 		super();
 		this.statut = statut;
-		this.date_soumis = date_soumis;
+		this.dateSoumis = date_soumis;
 		this.localisation = localisation;
-		this.date_disposition = date_disposition;
-		this.revenu_cadastral = revenu_cadastral;
-		this.coordonnees_client_ac = coordonnees_client_ac;
-		this.prix_loc = prix_loc;
-		this.date_loc = date_loc;
-		this.ref_contrat = ref_contrat;
+		this.dateDisposition = date_disposition;
+		this.revenuCadastral = revenu_cadastral;
+		this.coordonneesClientAc = coordonnees_client_ac;
+		this.prixLoc = prix_loc;
+		this.dateLoc = date_loc;
+		this.refContrat = ref_contrat;
 	}
 
 	/* Getters et setters */
@@ -145,16 +148,13 @@ public class BienImmobilier {
 		this.statut = statut;
 	}
 
-
-
-
 	public Date getDate_soumis() {
-		return date_soumis;
+		return dateSoumis;
 	}
 
 
 	public void setDate_soumis(Date date_soumis) {
-		this.date_soumis = date_soumis;
+		this.dateSoumis = date_soumis;
 	}
 
 
@@ -169,77 +169,95 @@ public class BienImmobilier {
 
 
 	public Date getDate_disposition() {
-		return date_disposition;
+		return dateDisposition;
 	}
 
 
 	public void setDate_disposition(Date date_disposition) {
-		this.date_disposition = date_disposition;
+		this.dateDisposition = date_disposition;
 	}
 
 
 	public double getRevenu_cadastral() {
-		return revenu_cadastral;
+		return revenuCadastral;
 	}
 
 
 	public void setRevenu_cadastral(double revenu_cadastral) {
-		this.revenu_cadastral = revenu_cadastral;
+		this.revenuCadastral = revenu_cadastral;
 	}
 
 
 	public String getCoordonnees_client_ac() {
-		return coordonnees_client_ac;
+		return coordonneesClientAc;
 	}
 
 
 	public void setCoordonnees_client_ac(String coordonnees_client_ac) {
-		this.coordonnees_client_ac = coordonnees_client_ac;
+		this.coordonneesClientAc = coordonnees_client_ac;
 	}
 
 
 	public double getPrix_loc() {
-		return prix_loc;
+		return prixLoc;
 	}
 
 
 	public void setPrix_loc(double prix_loc) {
-		this.prix_loc = prix_loc;
+		this.prixLoc = prix_loc;
 	}
 
 
 	public Date getDate_loc() {
-		return date_loc;
+		return dateLoc;
 	}
 
 
 	public void setDate_loc(Date date_loc) {
-		this.date_loc = date_loc;
+		this.dateLoc = date_loc;
 	}
 
 
 	public int getRef_contrat() {
-		return ref_contrat;
+		return refContrat;
 	}
 
 
 	public void setRef_contrat(int ref_contrat) {
-		this.ref_contrat = ref_contrat;
+		this.refContrat = ref_contrat;
 	}
 
+	public int getId() {
+		return id;
+	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
 
+	public List<Client> getListeClients() {
+		return listeClients;
+	}
 
-	/* Méthode toString() */
+	public void setListeClients(List<Client> listeClients) {
+		this.listeClients = listeClients;
+	}
+
+	public ClasseStd getTypeDeBien() {
+		return typeDeBien;
+	}
+
+	public void setTypeDeBien(ClasseStd typeDeBien) {
+		this.typeDeBien = typeDeBien;
+	}
+
 	@Override
 	public String toString() {
-		return "BienImmobilier [client=" + client + ", statut=" + statut + ", id_classe_std=" + 
-				 ", date_soumis=" + date_soumis + ", localisation=" + localisation + ", date_disposition="
-				+ date_disposition + ", revenu_cadastral=" + revenu_cadastral + ", coordonnees_client_ac="
-				+ coordonnees_client_ac + ", prix_loc=" + prix_loc + ", date_loc=" + date_loc + ", ref_contrat="
-				+ ref_contrat + "]";
+		return "BienImmobilier [id=" + id + ", statut=" + statut + ", dateSoumis=" + dateSoumis + ", localisation="
+				+ localisation + ", dateDisposition=" + dateDisposition + ", revenuCadastral=" + revenuCadastral
+				+ ", coordonneesClientAc=" + coordonneesClientAc + ", prixLoc=" + prixLoc + ", dateLoc=" + dateLoc
+				+ ", refContrat=" + refContrat + ", listeClients=" + listeClients + ", typeDeBien=" + typeDeBien
+				+ ", proprietaire=" + proprietaire + ", listeVisites=" + listeVisites + ", contrat=" + contrat + "]";
 	}
-	
-	
 	
 }
