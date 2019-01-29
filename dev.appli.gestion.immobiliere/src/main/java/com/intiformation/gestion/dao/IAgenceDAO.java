@@ -5,7 +5,6 @@ import java.util.List;
 import com.intiformation.gestion.entity.Acheter;
 import com.intiformation.gestion.entity.Agent;
 import com.intiformation.gestion.entity.BienImmobilier;
-import com.intiformation.gestion.entity.ClasseStd;
 import com.intiformation.gestion.entity.Client;
 import com.intiformation.gestion.entity.Louer;
 import com.intiformation.gestion.entity.Proprietaire;
