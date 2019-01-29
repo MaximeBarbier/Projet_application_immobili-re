@@ -6,20 +6,26 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-@Entity(name="buy")
-@Table(name="acheter")
-//@NamedQueries({@NamedQuery(name="Acheter.findAll",query="SELECT b FROM buy b")})
-public class Acheter extends ClasseStd{
-	
-	/*____________________________________________Attributs__________________________________________________*/
-	
-	@Column(name="prix_achat")
+@Entity(name = "buy")
+@Table(name = "acheter")
+// @NamedQueries({@NamedQuery(name="Acheter.findAll",query="SELECT b FROM buy
+// b")})
+public class Acheter extends ClasseStd {
+
+	/*
+	 * ____________________________________________Attributs__________________________________________________
+	 */
+
+	@Column(name = "prix_achat")
 	private double prixAchat;
-	@Column(name="etat")
+
+	@Column(name = "etat")
 	private String etat;
-	
-	/*____________________________________________ctor__________________________________________________*/
-	
+
+	/*
+	 * ____________________________________________ctor__________________________________________________
+	 */
+
 	/**
 	 * 
 	 */
@@ -36,8 +42,11 @@ public class Acheter extends ClasseStd{
 		this.prixAchat = prixAchat;
 		this.etat = etat;
 	}
-	
-	/*____________________________________________get/set/string__________________________________________________*/
+
+	/*
+	 * ____________________________________________get/set/
+	 * string__________________________________________________
+	 */
 
 	/**
 	 * @return the prixAchat
@@ -47,7 +56,8 @@ public class Acheter extends ClasseStd{
 	}
 
 	/**
-	 * @param prixAchat the prixAchat to set
+	 * @param prixAchat
+	 *            the prixAchat to set
 	 */
 	public void setPrixAchat(double prixAchat) {
 		this.prixAchat = prixAchat;
@@ -61,20 +71,21 @@ public class Acheter extends ClasseStd{
 	}
 
 	/**
-	 * @param etat the etat to set
+	 * @param etat
+	 *            the etat to set
 	 */
 	public void setEtat(String etat) {
 		this.etat = etat;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
 		return "Acheter [prixAchat=" + prixAchat + ", etat=" + etat + "]";
 	}
-	
-	
 
 }

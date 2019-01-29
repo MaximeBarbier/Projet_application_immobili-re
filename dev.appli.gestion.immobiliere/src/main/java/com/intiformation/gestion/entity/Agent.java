@@ -20,14 +20,19 @@ public class Agent {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id_agent")
 	private int id;
+	
 	@Column(name="nom_agent")
 	private String nom;
+	
 	@Column(name="telephone")
 	private String telephone;
+	
 	@Column(name="mail")
 	private String mail;
+	
 	@Column(name="username")
 	private String username;
+	
 	@Column(name="password")
 	private String password;
 	
