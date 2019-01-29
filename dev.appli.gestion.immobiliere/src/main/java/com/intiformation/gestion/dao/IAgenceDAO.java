@@ -2,6 +2,8 @@ package com.intiformation.gestion.dao;
 
 import java.util.List;
 
+import javax.persistence.Query;
+
 import com.intiformation.gestion.entity.Acheter;
 import com.intiformation.gestion.entity.Agent;
 import com.intiformation.gestion.entity.BienImmobilier;
@@ -55,21 +57,23 @@ public interface IAgenceDAO {
 
 	public String ajouterCSAcheter(Acheter csAcheter);
 
-	public List<Acheter> listCSAcheterByClient(int idClient);
+	public void modifierCSAcheter(Acheter csAcheter) ;
 
-	public void supprimerCSAcheter(String code);
-
-	public void modifierCSAcheter(Acheter csAcheter);
+	
 	
 	// CRUD Classe Standard louer
 	
 	public String ajouterCSLouer(Louer csLouer);
 
-	public List<Louer> listCSLouerByClient(int idClient);
-
-	public void supprimerCSLouer(String code);
-
 	public void modifierCSLouer(Louer csLouer);
+
+	//CRUD Classe Standard 
+	public List<ClasseStd> listCSByClient(int idClient);
+		
+
+	public void supprimerCS(String code) ;
+	
+	public List<ClasseStd> getListCStdByRef(String code);
 
 
 	// CRUD Classe Agent immobilier

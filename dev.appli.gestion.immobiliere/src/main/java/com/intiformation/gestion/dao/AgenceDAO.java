@@ -8,10 +8,12 @@ import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 
+import com.intiformation.gestion.entity.Acheter;
 import com.intiformation.gestion.entity.Agent;
 import com.intiformation.gestion.entity.BienImmobilier;
 import com.intiformation.gestion.entity.ClasseStd;
 import com.intiformation.gestion.entity.Client;
+import com.intiformation.gestion.entity.Louer;
 import com.intiformation.gestion.entity.Proprietaire;
 import com.intiformation.gestion.entity.Visite;
 
@@ -32,7 +34,7 @@ public class AgenceDAO implements IAgenceDAO {
 		this.em = em;
 	}
 	
-	/* METHODES */
+	//CRUD Proprietire
 
 	public int ajouterProprietaire(Proprietaire p) {
 		em.persist(p);
@@ -60,6 +62,7 @@ public class AgenceDAO implements IAgenceDAO {
 
 	}
 
+	//CRUD BI
 	public int ajouterBI(BienImmobilier bi, int idProp) {
 		Proprietaire p = getProprietairebyId(idProp);
 		bi.setProprietaire(p);
@@ -90,7 +93,21 @@ public class AgenceDAO implements IAgenceDAO {
 		query.setParameter(1, idProp);
 		return query.getResultList();
 	}
+	
+	public BienImmobilier getBibyId(int id) {
+		
+		return em.find(BienImmobilier.class, id);
+	}
 
+	public List<BienImmobilier> getListBIByClassSt(String code) {
+		
+		Query query = em.createQuery("SELECT bi  from bienImmobilier bi where bi.class.code= ?1");
+		query.setParameter(1, code);
+		return query.getResultList();
+	}
+
+	//CRUD Client 
+	
 	public int ajouterClient(Client c) {
 		em.persist(c);
 		return c.getId();
@@ -116,28 +133,9 @@ public class AgenceDAO implements IAgenceDAO {
 
 	}
 
-	public String ajouterCS(ClasseStd cs) {
-		em.persist(cs);
-		return cs.getCode();
-	}
+	
 
-	public List<ClasseStd> listCSByClient(int idClient) {
-		Query query = em.createQuery("SELECT cs from class cs where cs.client.id= ?1");
-		query.setParameter(1, idClient);
-		return query.getResultList();
-	}
-
-	public void supprimerCS(String code) {
-		ClasseStd cs = em.find(ClasseStd.class, code);
-		em.remove(cs);
-
-	}
-
-	public void modifierCS(ClasseStd cs) {
-		em.merge(cs);
-
-	}
-
+	//CRUD Agent 
 	public int ajouterAI(Agent ai) {
 		em.persist(ai);
 		return ai.getId();
@@ -165,6 +163,7 @@ public class AgenceDAO implements IAgenceDAO {
 		em.merge(ai);
 
 	}
+	//CRUD visite 
 
 	public int ajouterVisite(Visite v, int idBi) {
 		BienImmobilier bi = em.find(BienImmobilier.class, idBi);
@@ -185,14 +184,52 @@ public class AgenceDAO implements IAgenceDAO {
 		return query.getResultList();
 	}
 
-	public BienImmobilier getBibyId(int id) {
-		
-		return em.find(BienImmobilier.class, id);
+	//CRUD CS Acheter
+
+	public String ajouterCSAcheter(Acheter csAcheter) {
+		em.persist(csAcheter);
+		return csAcheter.getCode();
 	}
 
-	public List<BienImmobilier> getListBIByClassSt(String code) {
+	
+
+	public void modifierCSAcheter(Acheter csAcheter) {
+		em.merge( csAcheter);
 		
-		Query query = em.createQuery("SELECT bi  from bienImmobilier bi where bi.class.code= ?1");
+	}
+	
+	//CRUD CS Louer
+	
+	public String ajouterCSLouer(Louer csLouer) {
+		em.persist(csLouer);
+		return csLouer.getCode();
+	}
+
+	
+	
+
+	public void modifierCSLouer(Louer csLouer) {
+		
+		em.merge( csLouer);
+	}
+	
+	
+	//CRUD Class std
+	public List<ClasseStd> listCSByClient(int idClient) {
+		Query query = em.createQuery("SELECT cs from class cs where cs.client.id= ?1");
+		query.setParameter(1, idClient);
+		return query.getResultList();
+	}
+
+	public void supprimerCS(String code) {
+		ClasseStd cs = em.find(ClasseStd.class, code);
+		em.remove(cs);
+
+	}
+	
+
+	public List<ClasseStd> getListCStdByRef(String code) {
+		Query query = em.createQuery("SELECT c  from class c where c.code=?1");
 		query.setParameter(1, code);
 		return query.getResultList();
 	}
