@@ -2,10 +2,12 @@ package com.intiformation.gestion.dao;
 
 import java.util.List;
 
+import com.intiformation.gestion.entity.Acheter;
 import com.intiformation.gestion.entity.Agent;
 import com.intiformation.gestion.entity.BienImmobilier;
 import com.intiformation.gestion.entity.ClasseStd;
 import com.intiformation.gestion.entity.Client;
+import com.intiformation.gestion.entity.Louer;
 import com.intiformation.gestion.entity.Proprietaire;
 import com.intiformation.gestion.entity.Visite;
 
@@ -49,15 +51,26 @@ public interface IAgenceDAO {
 
 	public void modifierClient(Client c);
 
-	// CRUD Classe Standard
+	// CRUD Classe Standard acheter
 
-	public String ajouterCS(ClasseStd cs);
+	public String ajouterCSAcheter(Acheter csAcheter);
 
-	public List<ClasseStd> listCSByClient(int idClient);
+	public List<Acheter> listCSAcheterByClient(int idClient);
 
-	public void supprimerCS(String code);
+	public void supprimerCSAcheter(String code);
 
-	public void modifierCS(ClasseStd cs);
+	public void modifierCSAcheter(Acheter csAcheter);
+	
+	// CRUD Classe Standard louer
+	
+	public String ajouterCSLouer(Louer csLouer);
+
+	public List<Louer> listCSLouerByClient(int idClient);
+
+	public void supprimerCSLouer(String code);
+
+	public void modifierCSLouer(Louer csLouer);
+
 
 	// CRUD Classe Agent immobilier
 

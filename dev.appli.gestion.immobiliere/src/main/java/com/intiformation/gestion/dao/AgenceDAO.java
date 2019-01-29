@@ -31,6 +31,8 @@ public class AgenceDAO implements IAgenceDAO {
 	public void setEm(EntityManager em) {
 		this.em = em;
 	}
+	
+	/* METHODES */
 
 	public int ajouterProprietaire(Proprietaire p) {
 		em.persist(p);
