@@ -120,13 +120,13 @@ public class AgenceDAO implements IAgenceDAO {
 	}
 
 	public List<ClasseStd> listCSByClient(int idClient) {
-		Query query = em.createQuery("SELECT cs from ClasseStandard cs where cs.Client.id= ?1");
+		Query query = em.createQuery("SELECT cs from ClasseStd cs where cs.Client.id= ?1");
 		query.setParameter(1, idClient);
 		return query.getResultList();
 	}
 
-	public void supprimerCS(int id) {
-		ClasseStd cs = em.find(ClasseStd.class, id);
+	public void supprimerCS(String code) {
+		ClasseStd cs = em.find(ClasseStd.class, code);
 		em.remove(cs);
 
 	}
@@ -172,7 +172,7 @@ public class AgenceDAO implements IAgenceDAO {
 	}
 
 	public List<Visite> getVisiteByAgent(int idAgent) {
-		Query query = em.createQuery("SELECT v  from Visite v where v.Agnet.id= ?1");
+		Query query = em.createQuery("SELECT v  from Visite v where v.Agent.id= ?1");
 		query.setParameter(1, idAgent);
 		return query.getResultList();
 	}
@@ -184,7 +184,16 @@ public class AgenceDAO implements IAgenceDAO {
 	}
 
 	public BienImmobilier getBibyId(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return em.find(BienImmobilier.class, id);
 	}
+
+	public List<BienImmobilier> getListBIByClassSt(String code) {
+		
+		Query query = em.createQuery("SELECT bi  from BienImmobilier bi where bi.ClasseStd.code= ?1");
+		query.setParameter(1, code);
+		return query.getResultList();
+	}
+
+
 }

@@ -113,8 +113,8 @@ public class AgenceMetier implements IAgenceMetier{
 		return agenceDAO.listCSByClient(idClient);
 	}
 	@Transactional
-	public void supprimerCS(int id) {
-		agenceDAO.supprimerCS(id);
+	public void supprimerCS(String code) {
+		agenceDAO.supprimerCS(code);
 		
 	}
 	@Transactional
@@ -161,6 +161,11 @@ public class AgenceMetier implements IAgenceMetier{
 	public List<Visite> getVisiteByBienImmo(int idBI) {
 		
 		return agenceDAO.getVisiteByBienImmo(idBI);
+	}
+
+	public List<BienImmobilier> getListBIByClassSt(String code) {
+		
+		return agenceDAO.getListBIByClassSt(code);
 	}
 
 }

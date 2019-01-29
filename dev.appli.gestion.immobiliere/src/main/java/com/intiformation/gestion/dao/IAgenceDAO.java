@@ -34,6 +34,8 @@ public interface IAgenceDAO {
 	public void modifierBi(BienImmobilier bi);
 
 	public List<BienImmobilier> getListBIByIdPropietaire(int idProp);
+	
+	public List<BienImmobilier> getListBIByClassSt(String code);
 
 	// CRUD Client
 
@@ -53,7 +55,7 @@ public interface IAgenceDAO {
 
 	public List<ClasseStd> listCSByClient(int idClient);
 
-	public void supprimerCS(int id);
+	public void supprimerCS(String code);
 
 	public void modifierCS(ClasseStd cs);
 
