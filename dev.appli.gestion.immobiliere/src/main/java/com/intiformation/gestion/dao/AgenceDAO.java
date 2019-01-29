@@ -62,7 +62,7 @@ public class AgenceDAO implements IAgenceDAO {
 		Proprietaire p = getProprietairebyId(idProp);
 		bi.setProprietaire(p);
 		em.persist(bi);
-		return bi.get;
+		return bi.getId();
 	}
 
 	public List<BienImmobilier> listBi() {
@@ -166,7 +166,7 @@ public class AgenceDAO implements IAgenceDAO {
 
 	public int ajouterVisite(Visite v, int idBi) {
 		BienImmobilier bi = em.find(BienImmobilier.class, idBi);
-		v.setBienImmobilier(bi);
+		v.setBien(bi);
 		em.persist(v);
 		return v.getId();
 	}
@@ -181,5 +181,10 @@ public class AgenceDAO implements IAgenceDAO {
 		Query query = em.createQuery("SELECT v  from Visite v where v.BienImmobilier.id= ?1");
 		query.setParameter(1, idBI);
 		return query.getResultList();
+	}
+
+	public BienImmobilier getBibyId(int id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

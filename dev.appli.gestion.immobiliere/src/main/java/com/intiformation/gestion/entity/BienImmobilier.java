@@ -71,6 +71,7 @@ public class BienImmobilier implements Serializable{
 	private Contrat contrat;
 	
 	/* ctors */
+	
 	/**
 	 * ctor vide
 	 */
@@ -137,95 +138,8 @@ public class BienImmobilier implements Serializable{
 		this.dateLoc = date_loc;
 		this.refContrat = ref_contrat;
 	}
-
+	
 	/* Getters et setters */
-	public boolean isStatut() {
-		return statut;
-	}
-
-
-	public void setStatut(boolean statut) {
-		this.statut = statut;
-	}
-
-	public Date getDate_soumis() {
-		return dateSoumis;
-	}
-
-
-	public void setDate_soumis(Date date_soumis) {
-		this.dateSoumis = date_soumis;
-	}
-
-
-	public String getLocalisation() {
-		return localisation;
-	}
-
-
-	public void setLocalisation(String localisation) {
-		this.localisation = localisation;
-	}
-
-
-	public Date getDate_disposition() {
-		return dateDisposition;
-	}
-
-
-	public void setDate_disposition(Date date_disposition) {
-		this.dateDisposition = date_disposition;
-	}
-
-
-	public double getRevenu_cadastral() {
-		return revenuCadastral;
-	}
-
-
-	public void setRevenu_cadastral(double revenu_cadastral) {
-		this.revenuCadastral = revenu_cadastral;
-	}
-
-
-	public String getCoordonnees_client_ac() {
-		return coordonneesClientAc;
-	}
-
-
-	public void setCoordonnees_client_ac(String coordonnees_client_ac) {
-		this.coordonneesClientAc = coordonnees_client_ac;
-	}
-
-
-	public double getPrix_loc() {
-		return prixLoc;
-	}
-
-
-	public void setPrix_loc(double prix_loc) {
-		this.prixLoc = prix_loc;
-	}
-
-
-	public Date getDate_loc() {
-		return dateLoc;
-	}
-
-
-	public void setDate_loc(Date date_loc) {
-		this.dateLoc = date_loc;
-	}
-
-
-	public int getRef_contrat() {
-		return refContrat;
-	}
-
-
-	public void setRef_contrat(int ref_contrat) {
-		this.refContrat = ref_contrat;
-	}
 
 	public int getId() {
 		return id;
@@ -233,6 +147,78 @@ public class BienImmobilier implements Serializable{
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public boolean isStatut() {
+		return statut;
+	}
+
+	public void setStatut(boolean statut) {
+		this.statut = statut;
+	}
+
+	public Date getDateSoumis() {
+		return dateSoumis;
+	}
+
+	public void setDateSoumis(Date dateSoumis) {
+		this.dateSoumis = dateSoumis;
+	}
+
+	public String getLocalisation() {
+		return localisation;
+	}
+
+	public void setLocalisation(String localisation) {
+		this.localisation = localisation;
+	}
+
+	public Date getDateDisposition() {
+		return dateDisposition;
+	}
+
+	public void setDateDisposition(Date dateDisposition) {
+		this.dateDisposition = dateDisposition;
+	}
+
+	public double getRevenuCadastral() {
+		return revenuCadastral;
+	}
+
+	public void setRevenuCadastral(double revenuCadastral) {
+		this.revenuCadastral = revenuCadastral;
+	}
+
+	public String getCoordonneesClientAc() {
+		return coordonneesClientAc;
+	}
+
+	public void setCoordonneesClientAc(String coordonneesClientAc) {
+		this.coordonneesClientAc = coordonneesClientAc;
+	}
+
+	public double getPrixLoc() {
+		return prixLoc;
+	}
+
+	public void setPrixLoc(double prixLoc) {
+		this.prixLoc = prixLoc;
+	}
+
+	public Date getDateLoc() {
+		return dateLoc;
+	}
+
+	public void setDateLoc(Date dateLoc) {
+		this.dateLoc = dateLoc;
+	}
+
+	public int getRefContrat() {
+		return refContrat;
+	}
+
+	public void setRefContrat(int refContrat) {
+		this.refContrat = refContrat;
 	}
 
 	public List<Client> getListeClients() {
@@ -249,6 +235,30 @@ public class BienImmobilier implements Serializable{
 
 	public void setTypeDeBien(ClasseStd typeDeBien) {
 		this.typeDeBien = typeDeBien;
+	}
+
+	public Proprietaire getProprietaire() {
+		return proprietaire;
+	}
+
+	public void setProprietaire(Proprietaire proprietaire) {
+		this.proprietaire = proprietaire;
+	}
+
+	public List<Visite> getListeVisites() {
+		return listeVisites;
+	}
+
+	public void setListeVisites(List<Visite> listeVisites) {
+		this.listeVisites = listeVisites;
+	}
+
+	public Contrat getContrat() {
+		return contrat;
+	}
+
+	public void setContrat(Contrat contrat) {
+		this.contrat = contrat;
 	}
 
 	@Override

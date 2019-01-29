@@ -124,6 +124,14 @@ public class Visite implements Serializable{
 		this.agent = agent;
 	}
 
+	public BienImmobilier getBien() {
+		return bien;
+	}
+
+	public void setBien(BienImmobilier bien) {
+		this.bien = bien;
+	}
+
 	@Override
 	public String toString() {
 		return "Visite [id=" + id + ", date_disite=" + date_disite + ", horaire_visite=" + horaire_visite + "]";
