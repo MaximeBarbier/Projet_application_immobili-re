@@ -1,8 +1,10 @@
 package com.intiformation.gestion.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
-@Entity
+@Entity(name="client")
+@Table(name="client")
 public class Client extends Personne{
 
 	/* Import des champs hérités de la classe Personne */
