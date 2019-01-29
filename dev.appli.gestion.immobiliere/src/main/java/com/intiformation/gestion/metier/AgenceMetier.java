@@ -32,12 +32,12 @@ public class AgenceMetier implements IAgenceMetier{
 	
 		return agenceDAO.ajouterProprietaire(p);
 	}
-	@Transactional
+	@Transactional(readOnly=true)
 	public List<Proprietaire> listProprietaires() {
 		
 		return agenceDAO.listProprietaires();
 	}
-	@Transactional
+	@Transactional(readOnly=true)
 	public Proprietaire getProprietairebyId(int id) {
 	
 		return agenceDAO.getProprietairebyId(id);
@@ -57,7 +57,7 @@ public class AgenceMetier implements IAgenceMetier{
 		
 		return agenceDAO.ajouterBI(bi, idProp);
 	}
-	@Transactional
+	@Transactional(readOnly=true)
 	public BienImmobilier getBibyId(int id) {
 		
 		return agenceDAO.getBibyId(id);
@@ -72,7 +72,7 @@ public class AgenceMetier implements IAgenceMetier{
 		agenceDAO.modifierBi(bi);
 		
 	}
-	@Transactional
+	@Transactional(readOnly=true)
 	public List<BienImmobilier> getListBIByIdPropietaire(int idProp) {
 		
 		return agenceDAO.getListBIByIdPropietaire(idProp);
@@ -82,12 +82,12 @@ public class AgenceMetier implements IAgenceMetier{
 		
 		return agenceDAO.ajouterClient(c);
 	}
-	@Transactional
+	@Transactional(readOnly=true)
 	public List<Client> listClients() {
 		
 		return agenceDAO.listClients();
 	}
-	@Transactional
+	@Transactional(readOnly=true)
 	public Client getClientbyId(int id) {
 		
 		return agenceDAO.getClientbyId(id);
@@ -107,7 +107,7 @@ public class AgenceMetier implements IAgenceMetier{
 		
 		return agenceDAO.ajouterCS(cs);
 	}
-	@Transactional
+	@Transactional(readOnly=true)
 	public List<ClasseStd> listCSByClient(int idClient) {
 		
 		return agenceDAO.listCSByClient(idClient);
@@ -127,7 +127,7 @@ public class AgenceMetier implements IAgenceMetier{
 		
 		return agenceDAO.ajouterAI(ai);
 	}
-	@Transactional
+	@Transactional(readOnly=true)
 	public List<Agent> getListAgentByBienImmobilier(int idBI) {
 	
 		return agenceDAO.getListAgentByBienImmobilier(idBI);
@@ -137,7 +137,7 @@ public class AgenceMetier implements IAgenceMetier{
 		agenceDAO.supprimerAI(id);
 		
 	}
-	@Transactional
+	@Transactional(readOnly=true)
 	public Agent getAgentbyId(int id) {
 		
 		return agenceDAO.getAgentbyId(id);
@@ -152,17 +152,18 @@ public class AgenceMetier implements IAgenceMetier{
 		
 		return agenceDAO.ajouterVisite(v, idBi);
 	}
-	@Transactional
+	@Transactional(readOnly=true)
 	public List<Visite> getVisiteByAgent(int idAgent) {
 		
 		return agenceDAO.getVisiteByAgent(idAgent);
 	}
-	@Transactional
+	@Transactional(readOnly=true)
 	public List<Visite> getVisiteByBienImmo(int idBI) {
 		
 		return agenceDAO.getVisiteByBienImmo(idBI);
 	}
 
+	@Transactional(readOnly=true)
 	public List<BienImmobilier> getListBIByClassSt(String code) {
 		
 		return agenceDAO.getListBIByClassSt(code);
