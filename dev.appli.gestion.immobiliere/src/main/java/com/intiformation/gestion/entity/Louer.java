@@ -15,14 +15,19 @@ public class Louer extends ClasseStd{
 	
 	@Column(name="caution_locative")
 	private double cautionLocative;
+	
 	@Column(name="loyer_mensuel")
 	private double loyerMensuel;
+	
 	@Column(name="charges_mensuelle")
 	private double chargesMensuelles;
+	
 	@Column(name="type_bail")
 	private String typeBail;
+	
 	@Column(name="garniture")
 	private boolean garniture;
+	
 	@Column(name="revenu_cadastral")
 	private double revenuCadastral;
 	

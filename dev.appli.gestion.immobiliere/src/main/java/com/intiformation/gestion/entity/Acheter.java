@@ -10,8 +10,7 @@ import javax.persistence.Table;
 @Entity(name = "buy")
 @Table(name = "acheter")
 @DiscriminatorValue("acheter")
-// @NamedQueries({@NamedQuery(name="Acheter.findAll",query="SELECT b FROM buy
-// b")})
+// @NamedQueries({@NamedQuery(name="Acheter.findAll",query="SELECT b FROM buy b")})
 public class Acheter extends ClasseStd {
 
 	/*
@@ -39,16 +38,13 @@ public class Acheter extends ClasseStd {
 	 * @param prixAchat
 	 * @param etat
 	 */
-	public Acheter(double prixAchat, java.lang.String etat) {
+	public Acheter(double prixAchat, String etat) {
 		super();
 		this.prixAchat = prixAchat;
 		this.etat = etat;
 	}
 
-	/*
-	 * ____________________________________________get/set/
-	 * string__________________________________________________
-	 */
+	/* GETTERS AND SETTERS */
 
 	/**
 	 * @return the prixAchat
@@ -80,11 +76,6 @@ public class Acheter extends ClasseStd {
 		this.etat = etat;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString() {
 		return "Acheter [prixAchat=" + prixAchat + ", etat=" + etat + "]";
