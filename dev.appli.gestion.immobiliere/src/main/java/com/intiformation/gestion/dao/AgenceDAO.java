@@ -29,29 +29,29 @@ public class AgenceDAO implements IAgenceDAO {
 	}
 
 	public void supprimerProprietaire(int id) {
-		// TODO Auto-generated method stub
+		Proprietaire p = em.find(Proprietaire.class, id);
+		em.remove(p);
 		
 	}
 
 	public void modifierProprietaire(Proprietaire p) {
-		// TODO Auto-generated method stub
+		em.merge(p);
 		
 	}
 
 	public int ajouterBI(BienImmobilier bi, int idProp) {
-		// TODO Auto-generated method stub
-		return 0;
+		Proprietaire p = getProprietairebyId(idProp);
+		bi.setProprietaire(p);
+		em.persist(bi);
+		return bi.getId;
 	}
 
 	public List<BienImmobilier> listBi() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
-	public BienImmobilier getBibyId(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 	public void supprimerBi(int id) {
 		// TODO Auto-generated method stub
