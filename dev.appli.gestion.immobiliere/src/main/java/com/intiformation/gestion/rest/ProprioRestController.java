@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.intiformation.gestion.entity.Client;
 import com.intiformation.gestion.entity.Proprietaire;
 import com.intiformation.gestion.metier.IAgenceMetier;
 
@@ -42,7 +41,7 @@ public class ProprioRestController {
 	
 	@RequestMapping(value ="/listeProprio", method = RequestMethod.GET)
 	
-	public List<Proprietaire>getAllClients(){
+	public List<Proprietaire>getAllProprio(){
 		return agenceMetier.listProprietaires();
 	}//fin getAllClients
 	
