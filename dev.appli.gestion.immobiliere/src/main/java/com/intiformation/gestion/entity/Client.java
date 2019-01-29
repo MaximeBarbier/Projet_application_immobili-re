@@ -14,6 +14,9 @@ public class Client extends Personne{
 	@OneToMany
 	private List<ClasseStd> listeClasses;
 	
+	@OneToMany(mappedBy="client")
+	private List<Visite> listeVisites;
+	
 	@OneToOne(mappedBy="client")
 	private Contrat contrat;
 
