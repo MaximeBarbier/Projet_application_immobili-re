@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.intiformation.gestion.entity.ClasseStd;
-import com.intiformation.gestion.entity.Proprietaire;
+
 import com.intiformation.gestion.metier.IAgenceMetier;
 
 @RestController
@@ -69,10 +69,10 @@ public class ClasseStdRestController {
     /**
      * deleteClient
      */
-    @RequestMapping(value="//listeClasseStd/{classeStdById}}",method = RequestMethod.DELETE)
-    public void deleteProprio(@PathVariable("classeStdById")int id){
+    @RequestMapping(value="/listeClasseStd/{classeStdById}}",method = RequestMethod.DELETE)
+    public void deleteProprio(@PathVariable("classeStdById")String code){
     	
-    agenceMetier.supprimerCS(id);
+    agenceMetier.supprimerCS(code);
     }//fin deleteClient
     
 
