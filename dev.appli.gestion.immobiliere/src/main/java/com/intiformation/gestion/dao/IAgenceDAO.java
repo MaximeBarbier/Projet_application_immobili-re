@@ -22,7 +22,7 @@ public interface IAgenceDAO {
 	
 	public int ajouterBI(BienImmobilier bi, int idProp);
 	
-	public List<BienImmobilier> listBi();
+	
 	
 	public BienImmobilier getBibyId(int id);	
 	
