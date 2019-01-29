@@ -127,8 +127,8 @@
 
 	</dependencies>
 
-
 	<build>
 		<finalName>dev.appli.gestion.immobiliere</finalName>
 	</build>
+	
 </project>
