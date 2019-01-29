@@ -48,103 +48,121 @@ public class AgenceDAO implements IAgenceDAO {
 
 	public List<BienImmobilier> listBi() {
 		
-		return null;
+		Query query=em.createQuery("SELECT bi from BienImmobilier bi");
+		return query.getResultList();
 	}
 
 	
 
 	public void supprimerBi(int id) {
-		// TODO Auto-generated method stub
+	BienImmobilier bi = em.find(BienImmobilier.class, id);
+	
+	em.remove(bi);
 		
 	}
 
 	public void modifierBi(BienImmobilier bi) {
-		// TODO Auto-generated method stub
+		em.merge(bi);
 		
 	}
 
 	public List<BienImmobilier> getListBIByIdPropietaire(int idProp) {
-		// TODO Auto-generated method stub
-		return null;
+		Query query=em.createQuery("SELECT bi from BienImmobilier bi where bi.Proprietaire.id= ?1");
+		query.setParameter(1, idProp);
+		return query.getResultList();
 	}
 
 	public int ajouterClient(Client c) {
-		// TODO Auto-generated method stub
-		return 0;
+		em.persist(c);
+		return c.getId;
 	}
 
 	public List<Client> listClients() {
-		// TODO Auto-generated method stub
-		return null;
+		Query query=em.createQuery("SELECT c from Client c");
+		return query.getResultList();
 	}
 
 	public Client getClientbyId(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return em.find(Client.class, id);
 	}
 
 	public void supprimerClient(int id) {
-		// TODO Auto-generated method stub
+		Client c = em.find(Client.class, id);
 		
 	}
 
 	public void modifierClient(Client c) {
-		// TODO Auto-generated method stub
+		em.merge(c);
 		
 	}
 
 	public int ajouterCS(ClasseStandard cs) {
-		// TODO Auto-generated method stub
-		return 0;
+		em.persist(cs);
+		return cs.getId;
 	}
 
 	public List<ClasseStandard> listCSByClient(int idClient) {
-		// TODO Auto-generated method stub
-		return null;
+		Query query=em.createQuery("SELECT cs from ClasseStandard cs where cs.Client.id= ?1");
+		query.setParameter(1, idClient);
+		return query.getResultList();
 	}
 
 	public void supprimerCS(int id) {
-		// TODO Auto-generated method stub
+		ClasseStandard cs= em.find(ClasseStandard.class, id);
+		em.remove(cs);
 		
 	}
 
 	public void modifierCS(ClasseStandard cs) {
-		// TODO Auto-generated method stub
+		em.merge(cs);
 		
 	}
 
-	public int ajouterAI(AgentImmobilier ai) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int ajouterAI(Agent ai) {
+		em.persist(ai);
+		return ai.getId;
 	}
 
-	public List<AgentImmobilier> getListAgentByBienImmobilier(int idBI) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Agent> getListAgentByBienImmobilier(int idBI) {
+		Query query=em.createQuery("SELECT a from Agent a where a.BienImmobilier.id= ?1");
+		query.setParameter(1, idBI);
+		return query.getResultList();
+	}
+	
+	public Agent getAgentbyId(int id) {
+		
+		return em.find(Agent.class, id);
 	}
 
 	public void supprimerAI(int id) {
-		// TODO Auto-generated method stub
+		Agent agent = em.find(Agent.class, id);
+		
+		em.remove(agent);
 		
 	}
 
-	public void modifierAI(AgentImmobilier ai) {
-		// TODO Auto-generated method stub
+	public void modifierAI(Agent ai) {
+		em.merge(ai);
 		
 	}
 
 	public int ajouterVisite(Visite v, int idBi) {
-		// TODO Auto-generated method stub
-		return 0;
+		BienImmobilier bi = em.find(BienImmobilier.class, idBi);
+		v.setBienImmobilier(bi);
+		em.persist(v);
+		return v.getId;
 	}
 
 	public List<Visite> getVisiteByAgent(int idAgent) {
-		// TODO Auto-generated method stub
-		return null;
+		Query query=em.createQuery("SELECT v  from Visite v where v.Agnet.id= ?1");
+		query.setParameter(1, idAgent);
+		return query.getResultList();
 	}
 
 	public List<Visite> getVisiteByBienImmo(int idBI) {
-		// TODO Auto-generated method stub
-		return null;
+		Query query=em.createQuery("SELECT v  from Visite v where v.BienImmobilier.id= ?1");
+		query.setParameter(1, idBI);
+		return query.getResultList();
 	}
 }

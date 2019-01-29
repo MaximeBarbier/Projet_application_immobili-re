@@ -57,10 +57,11 @@ public interface IAgenceDAO {
 	
 	//CRUD Classe Agent immobilier 
 	
-	public int ajouterAI(AgentImmobilier ai);
-	public List<AgentImmobilier> getListAgentByBienImmobilier(int idBI);
+	public int ajouterAI(Agent ai);
+	public List<Agent> getListAgentByBienImmobilier(int idBI);
 	public void supprimerAI (int id);
-	public void modifierAI (AgentImmobilier ai);
+	public Agent getAgentbyId(int id);
+	public void modifierAI (Agent ai);
 	
 	
 	
