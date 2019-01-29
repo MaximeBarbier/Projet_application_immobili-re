@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -26,7 +27,7 @@ public class ClasseStd implements Serializable{
 	
 	@Id
 	@Column(name="id_classestd")
-	private String Code;
+	private String code;
 	
 	@Column(name="type")
 	private String type;
@@ -45,6 +46,9 @@ public class ClasseStd implements Serializable{
 	
 	@OneToMany(mappedBy="classeStd")
 	private List<BienImmobilier> listeBienImmobiliers;
+	
+	@ManyToMany(mappedBy="listeClasses")
+	private List<Client> listeClients;
 	
 	/*____________________________________________ctor__________________________________________________*/
 	
@@ -89,7 +93,7 @@ public class ClasseStd implements Serializable{
 	public ClasseStd(String code, String type, boolean modeOffre, double prixMax,
 			double superficieMin, List<BienImmobilier> listeBienImmobiliers) {
 		super();
-		Code = code;
+		code = code;
 		this.type=type;
 		this.modeOffre = modeOffre;
 		this.prixMax = prixMax;
@@ -101,14 +105,14 @@ public class ClasseStd implements Serializable{
 	 * @return the code
 	 */
 	public String getCode() {
-		return Code;
+		return code;
 	}
 
 	/**
 	 * @param code the code to set
 	 */
 	public void setCode(String code) {
-		Code = code;
+		code = code;
 	}
 
 	/**
@@ -199,7 +203,7 @@ public class ClasseStd implements Serializable{
 
 	@Override
 	public String toString() {
-		return "ClasseStd [Code=" + Code + ", type=" + type + ", modeOffre=" + modeOffre + ", prixMax=" + prixMax
+		return "ClasseStd [Code=" + code + ", type=" + type + ", modeOffre=" + modeOffre + ", prixMax=" + prixMax
 				+ ", superficieMin=" + superficieMin + ", typeClasse=" + typeClasse + ", listeBienImmobiliers="
 				+ listeBienImmobiliers + "]";
 	}
