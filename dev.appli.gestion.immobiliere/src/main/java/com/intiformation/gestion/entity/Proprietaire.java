@@ -1,8 +1,10 @@
 package com.intiformation.gestion.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
-@Entity
+@Entity(name="proprietaire")
+@Table(name="Proprietaire")
 public class Proprietaire extends Personne {
 
 	/* Déclaration des champs de la classe */

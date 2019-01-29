@@ -9,8 +9,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Entity
+@Entity(name="bienImmobilier")
+@Table(name="Bien_immobilier")
 public class BienImmobilier {
 
 	// Déclaration de client
@@ -35,9 +37,6 @@ public class BienImmobilier {
 	
 	@Column(name="statut")
 	private boolean statut;
-	
-	@Column(name="id_Classe_Standard")
-	private int id_classe_std;
 	
 	@Column(name="date_de_soumission")
 	private Date date_soumis;
@@ -74,6 +73,38 @@ public class BienImmobilier {
 		super();
 	}
 
+	
+	/**
+	 * ctor chargé sans id
+	 * @param client
+	 * @param statut
+	 * @param date_soumis
+	 * @param localisation
+	 * @param date_disposition
+	 * @param revenu_cadastral
+	 * @param coordonnees_client_ac
+	 * @param prix_loc
+	 * @param date_loc
+	 * @param ref_contrat
+	 * @param listeClients
+	 */
+	public BienImmobilier(Client client, boolean statut, Date date_soumis, String localisation, Date date_disposition,
+			double revenu_cadastral, String coordonnees_client_ac, double prix_loc, Date date_loc, int ref_contrat,
+			List<Client> listeClients) {
+		super();
+		this.client = client;
+		this.statut = statut;
+		this.date_soumis = date_soumis;
+		this.localisation = localisation;
+		this.date_disposition = date_disposition;
+		this.revenu_cadastral = revenu_cadastral;
+		this.coordonnees_client_ac = coordonnees_client_ac;
+		this.prix_loc = prix_loc;
+		this.date_loc = date_loc;
+		this.ref_contrat = ref_contrat;
+		this.listeClients = listeClients;
+	}
+
 
 	/**
 	 * ctor chargé
@@ -94,7 +125,6 @@ public class BienImmobilier {
 			Date date_loc, int ref_contrat, List<Client> listeClients) {
 		super();
 		this.statut = statut;
-		this.id_classe_std = id_classe_std;
 		this.date_soumis = date_soumis;
 		this.localisation = localisation;
 		this.date_disposition = date_disposition;
@@ -116,14 +146,6 @@ public class BienImmobilier {
 	}
 
 
-	public int getId_classe_std() {
-		return id_classe_std;
-	}
-
-
-	public void setId_classe_std(int id_classe_std) {
-		this.id_classe_std = id_classe_std;
-	}
 
 
 	public Date getDate_soumis() {
@@ -211,8 +233,8 @@ public class BienImmobilier {
 	/* Méthode toString() */
 	@Override
 	public String toString() {
-		return "BienImmobilier [client=" + client + ", statut=" + statut + ", id_classe_std=" + id_classe_std
-				+ ", date_soumis=" + date_soumis + ", localisation=" + localisation + ", date_disposition="
+		return "BienImmobilier [client=" + client + ", statut=" + statut + ", id_classe_std=" + 
+				 ", date_soumis=" + date_soumis + ", localisation=" + localisation + ", date_disposition="
 				+ date_disposition + ", revenu_cadastral=" + revenu_cadastral + ", coordonnees_client_ac="
 				+ coordonnees_client_ac + ", prix_loc=" + prix_loc + ", date_loc=" + date_loc + ", ref_contrat="
 				+ ref_contrat + "]";
