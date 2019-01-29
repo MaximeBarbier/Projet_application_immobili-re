@@ -48,7 +48,7 @@ public class ClientRestController {
 	 * getClientsById
 	 * @return
 	 */
-	@RequestMapping(value="/clients/{clientId}",method=RequestMethod.GET)
+	@RequestMapping(value="/listeClient/{clientId}",method=RequestMethod.GET)
 	public Client getClientById (@PathVariable("clientId")int id) {
 		agenceMetier.getClientbyId(id);
 		
@@ -73,7 +73,7 @@ public class ClientRestController {
 	 * updateClasseStd
 	 */
 
-    @RequestMapping(value="/client/{clientId}",method = RequestMethod.PUT)
+    @RequestMapping(value="/listeClient/{clientId}",method = RequestMethod.PUT)
     public void updateClient (@RequestBody Client client) {
     	
     	agenceMetier.modifierClient(client);
@@ -86,7 +86,7 @@ public class ClientRestController {
     /**
      * deleteClient
      */
-    @RequestMapping(value="/listeProprio/{clientId}",method = RequestMethod.DELETE)
+    @RequestMapping(value="/listeClient/{clientId}",method = RequestMethod.DELETE)
     public void deleteClient(@PathVariable("clientId")int id){
     	
     agenceMetier.supprimerClient(id);
