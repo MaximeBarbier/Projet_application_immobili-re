@@ -3,6 +3,9 @@ package com.intiformation.gestion.entity;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -11,7 +14,10 @@ import javax.persistence.Table;
 @Table(name="client")
 public class Client extends Personne{
 	
-	@OneToMany
+	@ManyToMany
+	@JoinTable(name="Clients_ListeClasses", 
+			   joinColumns = {@JoinColumn(name = "personne_id")},
+			   inverseJoinColumns = {@JoinColumn(name = "classestd_id")})
 	private List<ClasseStd> listeClasses;
 	
 	@OneToMany(mappedBy="client")
