@@ -82,10 +82,12 @@ public class ClientRestController {
     }//fin de modifierClient
 
     
+    
     /**
      * deleteClient
      */
-    public void deleteClient(@PathVariable("client")int id){
+    @RequestMapping(value="/listeProprio/{clientId}",method = RequestMethod.DELETE)
+    public void deleteClient(@PathVariable("clientId")int id){
     	
     agenceMetier.supprimerClient(id);
     }//fin deleteClient
