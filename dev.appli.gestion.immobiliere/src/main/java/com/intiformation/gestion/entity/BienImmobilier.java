@@ -51,9 +51,6 @@ public class BienImmobilier implements Serializable{
 	
 	@Column(name="reference_contrat")
 	private int refContrat;
-		
-	@Column(name="liste_des_clients")
-	private List<Client> listeClients;
 	
 	@ManyToOne
 	@JoinColumn(name="classestd_id", referencedColumnName="id_classestd")
@@ -93,8 +90,7 @@ public class BienImmobilier implements Serializable{
 	 * @param listeClients
 	 */
 	public BienImmobilier(boolean statut, Date date_soumis, String localisation, Date date_disposition,
-			double revenu_cadastral, String coordonnees_client_ac, double prix_loc, Date date_loc, int ref_contrat,
-			List<Client> listeClients) {
+			double revenu_cadastral, String coordonnees_client_ac, double prix_loc, Date date_loc, int ref_contrat) {
 		super();
 		this.statut = statut;
 		this.dateSoumis = date_soumis;
@@ -105,7 +101,6 @@ public class BienImmobilier implements Serializable{
 		this.prixLoc = prix_loc;
 		this.dateLoc = date_loc;
 		this.refContrat = ref_contrat;
-		this.listeClients = listeClients;
 	}
 
 
@@ -220,14 +215,6 @@ public class BienImmobilier implements Serializable{
 		this.refContrat = refContrat;
 	}
 
-	public List<Client> getListeClients() {
-		return listeClients;
-	}
-
-	public void setListeClients(List<Client> listeClients) {
-		this.listeClients = listeClients;
-	}
-
 	public ClasseStd getClasseStd() {
 		return classeStd;
 	}
@@ -265,7 +252,7 @@ public class BienImmobilier implements Serializable{
 		return "BienImmobilier [id=" + id + ", statut=" + statut + ", dateSoumis=" + dateSoumis + ", localisation="
 				+ localisation + ", dateDisposition=" + dateDisposition + ", revenuCadastral=" + revenuCadastral
 				+ ", coordonneesClientAc=" + coordonneesClientAc + ", prixLoc=" + prixLoc + ", dateLoc=" + dateLoc
-				+ ", refContrat=" + refContrat + ", listeClients=" + listeClients + ", classeStd=" + classeStd
+				+ ", refContrat=" + refContrat + ", classeStd=" + classeStd
 				+ ", proprietaire=" + proprietaire + ", listeVisites=" + listeVisites + ", contrat=" + contrat + "]";
 	}
 
