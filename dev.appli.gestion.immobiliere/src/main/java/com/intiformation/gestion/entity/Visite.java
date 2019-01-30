@@ -135,11 +135,21 @@ public class Visite implements Serializable{
 	public void setBienImmobilier(BienImmobilier bienImmobilier) {
 		this.bienImmobilier = bienImmobilier;
 	}
+	
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
 
 	@Override
 	public String toString() {
 		return "Visite [id=" + id + ", date_disite=" + date_disite + ", horaire_visite=" + horaire_visite + ", agent="
-				+ agent + ", bienImmobilier=" + bienImmobilier + "]";
+				+ agent + ", client=" + client + ", bienImmobilier=" + bienImmobilier + "]";
 	}
+
+	
 
 }

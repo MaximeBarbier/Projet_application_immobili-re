@@ -7,6 +7,7 @@ import com.intiformation.gestion.entity.Agent;
 import com.intiformation.gestion.entity.BienImmobilier;
 import com.intiformation.gestion.entity.ClasseStd;
 import com.intiformation.gestion.entity.Client;
+import com.intiformation.gestion.entity.Contrat;
 import com.intiformation.gestion.entity.Louer;
 import com.intiformation.gestion.entity.Proprietaire;
 import com.intiformation.gestion.entity.Visite;
@@ -86,12 +87,15 @@ public interface IAgenceMetier {
 
 		// CRUD Visite
 
-		public int ajouterVisite(Visite v, int idBi);
+		public int ajouterVisite(Visite v, int idBI, int idAgent, int idClient);
 
 		public List<Visite> getVisiteByAgent(int idAgent);
 
 		public List<Visite> getVisiteByBienImmo(int idBI);
 
 		// CRUD Contrat
+		public String creerContrat(Contrat c, int idBI, int idAgent, int idClient );
+		
+		public List<Contrat> getContratByClientWithRef(int idAgent, String ref);
 
 }
