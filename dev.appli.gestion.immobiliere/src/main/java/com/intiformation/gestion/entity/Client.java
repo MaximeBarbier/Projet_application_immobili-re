@@ -11,11 +11,11 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity(name="client")
-@Table(name="client")
+@Table(name="clients")
 public class Client extends Personne{
 	
 	@ManyToMany
-	@JoinTable(name="Clients_ListeClasses", 
+	@JoinTable(name="clients_listeclasses", 
 			   joinColumns = {@JoinColumn(name = "personne_id")},
 			   inverseJoinColumns = {@JoinColumn(name = "classestd_id")})
 	private List<ClasseStd> listeClasses;
@@ -26,41 +26,16 @@ public class Client extends Personne{
 	@OneToOne(mappedBy="client")
 	private Contrat contrat;
 
-	/* Import des champs hérités de la classe Personne */
-	@Override
-	public int getId() {
-		return super.getId();
+	/* CTOR */
+	public Client() {
+		super();
 	}
 
-	@Override
-	public void setId(int id) {
-		super.setId(id);
-	}
-
-	@Override
-	public String getNom() {
-		return super.getNom();
-	}
-
-
-	@Override
-	public String getAdresse() {
-		return super.getAdresse();
-	}
-
-	@Override
-	public void setAdresse(String adresse) {
-		super.setAdresse(adresse);
-	}
-
-	@Override
-	public String getTelephone() {
-		return super.getTelephone();
-	}
-
-	@Override
-	public void setTelephone(String telephone) {
-		super.setTelephone(telephone);
+	public Client(List<ClasseStd> listeClasses, List<Visite> listeVisites, Contrat contrat) {
+		super();
+		this.listeClasses = listeClasses;
+		this.listeVisites = listeVisites;
+		this.contrat = contrat;
 	}
 
 	public List<ClasseStd> getListeClasses() {
@@ -69,6 +44,14 @@ public class Client extends Personne{
 
 	public void setListeClasses(List<ClasseStd> listeClasses) {
 		this.listeClasses = listeClasses;
+	}
+
+	public List<Visite> getListeVisites() {
+		return listeVisites;
+	}
+
+	public void setListeVisites(List<Visite> listeVisites) {
+		this.listeVisites = listeVisites;
 	}
 
 	public Contrat getContrat() {
@@ -81,37 +64,7 @@ public class Client extends Personne{
 
 	@Override
 	public String toString() {
-		return super.toString();
+		return "Client [listeClasses=" + listeClasses + ", listeVisites=" + listeVisites + ", contrat=" + contrat + "]";
 	}
-
 	
-	/* ctors hérités de la classe Personne */
-	/**
-	 * ctor vide
-	 */
-	public Client() {
-		super();
-	}
-
-	/**
-	 * ctor chargé
-	 * @param id
-	 * @param nom
-	 * @param adresse
-	 * @param telephone
-	 */
-	public Client(int id, String nom, String adresse, String telephone) {
-		super(id, nom, adresse, telephone);
-	}
-
-	/**
-	 * ctor chargé sans l'ID
-	 * @param nom
-	 * @param adresse
-	 * @param telephone
-	 */
-	public Client(String nom, String adresse, String telephone) {
-		super(nom, adresse, telephone);
-	}
-
 }

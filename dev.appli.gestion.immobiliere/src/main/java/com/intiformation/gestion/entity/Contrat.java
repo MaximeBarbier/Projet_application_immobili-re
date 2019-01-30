@@ -48,7 +48,6 @@ public class Contrat implements Serializable {
 		this.refContrat = refContrat;
 	}
 
-
 	/* Getters et setters */
 	public String getRefContrat() {
 		return refContrat;
@@ -82,6 +81,7 @@ public class Contrat implements Serializable {
 		this.agent = agent;
 	}
 
+	
 	/*  Méthode toString() */
 	@Override
 	public String toString() {

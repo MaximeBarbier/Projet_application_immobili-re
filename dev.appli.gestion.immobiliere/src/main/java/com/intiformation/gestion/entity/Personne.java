@@ -23,8 +23,14 @@ public class Personne implements Serializable{
 	@Column(name="adresse")
 	private String adresse;
 	
-	@Column(name="telephone")
-	private String telephone;
+	@Column(name="code_postal")
+	private String codePostal;
+	
+	@Column(name="localite")
+	private String localite;
+	
+	@Column(name="telephone_prive")
+	private String telephonePrive;
 	
 	/* ctors */
 	/**
@@ -33,82 +39,78 @@ public class Personne implements Serializable{
 	public Personne() {
 		super();
 	}
-	
-	/**
-	 * ctor chargé
-	 * @param id
-	 * @param nom
-	 * @param adresse
-	 * @param telephone
-	 */
-	public Personne(int id, String nom, String adresse, String telephone) {
+
+	public Personne(String nom, String adresse, String codePostal, String localite, String telephonePrive) {
+		super();
+		this.nom = nom;
+		this.adresse = adresse;
+		this.codePostal = codePostal;
+		this.localite = localite;
+		this.telephonePrive = telephonePrive;
+	}
+
+	public Personne(int id, String nom, String adresse, String codePostal, String localite, String telephonePrive) {
 		super();
 		this.id = id;
 		this.nom = nom;
 		this.adresse = adresse;
-		this.telephone = telephone;
-	}
-	
-	/**
-	 * ctor chargé sans l'id
-	 * @param nom
-	 * @param adresse
-	 * @param telephone
-	 */
-	public Personne(String nom, String adresse, String telephone) {
-		super();
-		this.nom = nom;
-		this.adresse = adresse;
-		this.telephone = telephone;
+		this.codePostal = codePostal;
+		this.localite = localite;
+		this.telephonePrive = telephonePrive;
 	}
 
-	/* Getters et setters */
 	public int getId() {
 		return id;
 	}
-
 
 	public void setId(int id) {
 		this.id = id;
 	}
 
-
 	public String getNom() {
 		return nom;
 	}
 
-
-	public String setNom(String nom) {
+	public void setNom(String nom) {
 		this.nom = nom;
-		return "";
 	}
-
 
 	public String getAdresse() {
 		return adresse;
 	}
 
-
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
 	}
 
-
-	public String getTelephone() {
-		return telephone;
+	public String getCodePostal() {
+		return codePostal;
 	}
 
-
-	public void setTelephone(String telephone) {
-		this.telephone = telephone;
+	public void setCodePostal(String codePostal) {
+		this.codePostal = codePostal;
 	}
 
+	public String getLocalite() {
+		return localite;
+	}
 
-	/* Méthode toString() */
+	public void setLocalite(String localite) {
+		this.localite = localite;
+	}
+
+	public String getTelephonePrive() {
+		return telephonePrive;
+	}
+
+	public void setTelephonePrive(String telephonePrive) {
+		this.telephonePrive = telephonePrive;
+	}
+
 	@Override
 	public String toString() {
-		return "Personne [id=" + id + ", nom=" + nom + ", adresse=" + adresse + ", telephone=" + telephone + "]";
+		return "Personne [id=" + id + ", nom=" + nom + ", adresse=" + adresse + ", codePostal=" + codePostal
+				+ ", localite=" + localite + ", telephonePrive=" + telephonePrive + "]";
 	}
-	
 
 }

@@ -9,18 +9,14 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity(name="class")
-@Table(name="classesStd")
+@Table(name="classes_standards")
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="type_Classe")
-//@NamedQueries({@NamedQuery(name="ClasseStd.findAll",query="SELECT c from class c")})
+@DiscriminatorColumn(name="mode_offre")
 public class ClasseStd implements Serializable{
 	
 	/*____________________________________________Attributs__________________________________________________*/
@@ -29,10 +25,10 @@ public class ClasseStd implements Serializable{
 	@Column(name="id_classestd")
 	private String code;
 	
-	@Column(name="type")
-	private String type;
+	@Column(name="type_de_bien")
+	private String typeDeBien;
 	
-	@Column(name="mode_offre")
+	@Column(name="mode_offre", insertable = false, updatable = false)
 	private boolean modeOffre;
 	
 	@Column(name="prix_maximum")
@@ -40,9 +36,6 @@ public class ClasseStd implements Serializable{
 	
 	@Column(name="superficie_minimum")
 	private double superficieMin;
-	
-	@Column(name="type_Classe", insertable = false, updatable = false)
-	private String typeClasse;
 	
 	@OneToMany(mappedBy="classeStd")
 	private List<BienImmobilier> listeBienImmobiliers;
@@ -60,152 +53,88 @@ public class ClasseStd implements Serializable{
 	}
 
 	/**
-	 * ctor chargé sans l'id Code
-	 * @param string
-	 * @param modeOffre
-	 * @param prixMax
-	 * @param superficieMin
-	 * @param listeBienImmobiliers
-	 */
-	
-	public ClasseStd(String type, boolean modeOffre, double prixMax, double superficieMin,
-			List<BienImmobilier> listeBienImmobiliers) {
-		super();
-		this.type=type;
-		this.modeOffre = modeOffre;
-		this.prixMax = prixMax;
-		this.superficieMin = superficieMin;
-		this.listeBienImmobiliers = listeBienImmobiliers;
-	}
-
-	/**
-	 * ctor chargé avec l'id Code
+	 * Constructeur chargé avec tout
 	 * @param code
-	 * @param string
+	 * @param typeDeBien
 	 * @param modeOffre
 	 * @param prixMax
 	 * @param superficieMin
 	 * @param listeBienImmobiliers
+	 * @param listeClients
 	 */
-	
-	/*____________________________________________get/set/string__________________________________________________*/
-	
-	public ClasseStd(String code, String type, boolean modeOffre, double prixMax,
-			double superficieMin, List<BienImmobilier> listeBienImmobiliers) {
+	public ClasseStd(String code, String typeDeBien, boolean modeOffre, double prixMax, double superficieMin,
+			List<BienImmobilier> listeBienImmobiliers, List<Client> listeClients) {
 		super();
-		code = code;
-		this.type=type;
+		this.code = code;
+		this.typeDeBien = typeDeBien;
 		this.modeOffre = modeOffre;
 		this.prixMax = prixMax;
 		this.superficieMin = superficieMin;
 		this.listeBienImmobiliers = listeBienImmobiliers;
+		this.listeClients = listeClients;
 	}
 
-	/**
-	 * @return the code
-	 */
 	public String getCode() {
 		return code;
 	}
 
-	/**
-	 * @param code the code to set
-	 */
 	public void setCode(String code) {
-		code = code;
+		this.code = code;
 	}
 
-	/**
-	 * @return the string
-	 */
-	public String getString() {
-		return type;
+	public String getTypeDeBien() {
+		return typeDeBien;
 	}
 
-	/**
-	 * @param string the string to set
-	 */
-	public void setString(String type) {
-		this.type=type;
+	public void setTypeDeBien(String typeDeBien) {
+		this.typeDeBien = typeDeBien;
 	}
 
-	/**
-	 * @return the modeOffre
-	 */
 	public boolean isModeOffre() {
 		return modeOffre;
 	}
 
-	/**
-	 * @param modeOffre the modeOffre to set
-	 */
 	public void setModeOffre(boolean modeOffre) {
 		this.modeOffre = modeOffre;
 	}
 
-	/**
-	 * @return the prixMax
-	 */
 	public double getPrixMax() {
 		return prixMax;
 	}
 
-	/**
-	 * @param prixMax the prixMax to set
-	 */
 	public void setPrixMax(double prixMax) {
 		this.prixMax = prixMax;
 	}
 
-	/**
-	 * @return the superficieMin
-	 */
 	public double getSuperficieMin() {
 		return superficieMin;
 	}
 
-	/**
-	 * @param superficieMin the superficieMin to set
-	 */
 	public void setSuperficieMin(double superficieMin) {
 		this.superficieMin = superficieMin;
 	}
 
-	/**
-	 * @return the listeBienImmobiliers
-	 */
 	public List<BienImmobilier> getListeBienImmobiliers() {
 		return listeBienImmobiliers;
 	}
 
-	/**
-	 * @param listeBienImmobiliers the listeBienImmobiliers to set
-	 */
 	public void setListeBienImmobiliers(List<BienImmobilier> listeBienImmobiliers) {
 		this.listeBienImmobiliers = listeBienImmobiliers;
 	}
-	
-	public String getType() {
-		return type;
+
+	public List<Client> getListeClients() {
+		return listeClients;
 	}
 
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	public String getTypeClasse() {
-		return typeClasse;
-	}
-
-	public void setTypeClasse(String typeClasse) {
-		this.typeClasse = typeClasse;
+	public void setListeClients(List<Client> listeClients) {
+		this.listeClients = listeClients;
 	}
 
 	@Override
 	public String toString() {
-		return "ClasseStd [Code=" + code + ", type=" + type + ", modeOffre=" + modeOffre + ", prixMax=" + prixMax
-				+ ", superficieMin=" + superficieMin + ", typeClasse=" + typeClasse + ", listeBienImmobiliers="
-				+ listeBienImmobiliers + "]";
+		return "ClasseStd [code=" + code + ", typeDeBien=" + typeDeBien + ", modeOffre=" + modeOffre + ", prixMax="
+				+ prixMax + ", superficieMin=" + superficieMin + ", listeBienImmobiliers=" + listeBienImmobiliers
+				+ ", listeClients=" + listeClients + "]";
 	}
 	
 }

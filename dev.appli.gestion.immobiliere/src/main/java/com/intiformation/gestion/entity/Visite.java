@@ -14,7 +14,6 @@ import javax.persistence.Table;
 
 @Entity(name="visite")
 @Table(name="visites")
-//@NamedQueries({@NamedQuery(name="Visite.findAll",query="SELECT v from visite v")})
 public class Visite implements Serializable{
 	
 	/*____________________________________________Attributs__________________________________________________*/
@@ -25,107 +24,89 @@ public class Visite implements Serializable{
 	private int id;
 	
 	@Column(name="date_visite")
-	private Date date_disite;
+	private Date dateVisite;
 	
 	@Column(name="horaire_visite")
-	private Date horaire_visite;
+	private Date horaireVisite;
 	
 	@ManyToOne
 	@JoinColumn(name="agent_id", referencedColumnName="id_agent")
 	private Agent agent;
 	
 	@ManyToOne
-	@JoinColumn(name="personne_id", referencedColumnName="id_personne")
+	@JoinColumn(name="client_id", referencedColumnName="id_personne")
 	private Client client;
-	
 	
 	@ManyToOne
 	@JoinColumn(name="bien_id", referencedColumnName="id_bien")
 	private BienImmobilier bienImmobilier;
 	
-	/*____________________________________________ctor__________________________________________________*/
+	/* CTOR */
 	
-	/**
-	 * ctor vide
-	 */
 	public Visite() {
 		super();
 	}
 
-	/**
-	 * ctor chargé sans l'id
-	 * @param date_disite
-	 * @param horaire_visite
-	 */
-	public Visite(Date date_disite, Date horaire_visite) {
+	public Visite(Date dateVisite, Date horaireVisite, Agent agent, Client client, BienImmobilier bienImmobilier) {
 		super();
-		this.date_disite = date_disite;
-		this.horaire_visite = horaire_visite;
+		this.dateVisite = dateVisite;
+		this.horaireVisite = horaireVisite;
+		this.agent = agent;
+		this.client = client;
+		this.bienImmobilier = bienImmobilier;
 	}
 
-	/**
-	 * ctor chargé avec l'id
-	 * @param id
-	 * @param date_disite
-	 * @param horaire_visite
-	 */
-	public Visite(int id, Date date_disite, Date horaire_visite) {
+	public Visite(int id, Date dateVisite, Date horaireVisite, Agent agent, Client client,
+			BienImmobilier bienImmobilier) {
 		super();
 		this.id = id;
-		this.date_disite = date_disite;
-		this.horaire_visite = horaire_visite;
+		this.dateVisite = dateVisite;
+		this.horaireVisite = horaireVisite;
+		this.agent = agent;
+		this.client = client;
+		this.bienImmobilier = bienImmobilier;
 	}
-	
-	/*____________________________________________get/set/string__________________________________________________*/
 
-	/**
-	 * @return the id
-	 */
+	/* GETTERS AND SETTERS */
+	
 	public int getId() {
 		return id;
 	}
 
-	/**
-	 * @param id the id to set
-	 */
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	/**
-	 * @return the date_disite
-	 */
-	public Date getDate_disite() {
-		return date_disite;
+	public Date getDateVisite() {
+		return dateVisite;
 	}
 
-	/**
-	 * @param date_disite the date_disite to set
-	 */
-	public void setDate_disite(Date date_disite) {
-		this.date_disite = date_disite;
+	public void setDateVisite(Date dateVisite) {
+		this.dateVisite = dateVisite;
 	}
 
-	/**
-	 * @return the horaire_visite
-	 */
-	public Date getHoraire_visite() {
-		return horaire_visite;
+	public Date getHoraireVisite() {
+		return horaireVisite;
 	}
 
-	/**
-	 * @param horaire_visite the horaire_visite to set
-	 */
-	public void setHoraire_visite(Date horaire_visite) {
-		this.horaire_visite = horaire_visite;
+	public void setHoraireVisite(Date horaireVisite) {
+		this.horaireVisite = horaireVisite;
 	}
-	
+
 	public Agent getAgent() {
 		return agent;
 	}
 
 	public void setAgent(Agent agent) {
 		this.agent = agent;
+	}
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
 	}
 
 	public BienImmobilier getBienImmobilier() {
@@ -135,21 +116,11 @@ public class Visite implements Serializable{
 	public void setBienImmobilier(BienImmobilier bienImmobilier) {
 		this.bienImmobilier = bienImmobilier;
 	}
-	
-	public Client getClient() {
-		return client;
-	}
-
-	public void setClient(Client client) {
-		this.client = client;
-	}
 
 	@Override
 	public String toString() {
-		return "Visite [id=" + id + ", date_disite=" + date_disite + ", horaire_visite=" + horaire_visite + ", agent="
+		return "Visite [id=" + id + ", dateVisite=" + dateVisite + ", horaireVisite=" + horaireVisite + ", agent="
 				+ agent + ", client=" + client + ", bienImmobilier=" + bienImmobilier + "]";
 	}
-
 	
-
 }
