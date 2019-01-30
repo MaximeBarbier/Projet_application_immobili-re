@@ -84,6 +84,8 @@ public interface IAgenceDAO {
 	public Agent getAgentbyId(int id);
 
 	public void modifierAI(Agent ai);
+	
+	public Agent getUsernPass(String username, String password);
 
 	// CRUD Visite
 

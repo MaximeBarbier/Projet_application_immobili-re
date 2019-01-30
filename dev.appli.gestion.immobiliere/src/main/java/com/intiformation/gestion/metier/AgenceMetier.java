@@ -239,6 +239,12 @@ public class AgenceMetier implements IAgenceMetier {
 		return agenceDAO.getContratByClientWithRef(idAgent, ref);
 	}
 
+	@Transactional(readOnly=true)
+	public Agent getUsernPass(String username, String password) {
+		
+		return agenceDAO.getUsernPass(username, password);
+	}
+
 	
 
 	
