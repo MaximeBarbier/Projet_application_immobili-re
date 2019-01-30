@@ -194,6 +194,16 @@ public class AgenceDAO implements IAgenceDAO {
 		em.merge(ai);
 
 	}
+	
+	public Agent getUsernPass(String username, String password) {
+		Query query= em.createQuery("select a.username, a.password from agent a where a.username=?1 and a.password=?2 ");
+		query.setParameter(1,username);
+		query.setParameter(2, password);
+		
+		return (Agent) query.getSingleResult();
+		
+	}
+	
 	//CRUD visite 
 
 	
