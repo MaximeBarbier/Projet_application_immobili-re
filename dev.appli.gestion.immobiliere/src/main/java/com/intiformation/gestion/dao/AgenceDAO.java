@@ -8,13 +8,11 @@ import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 
-import com.intiformation.gestion.entity.Acheter;
 import com.intiformation.gestion.entity.Agent;
 import com.intiformation.gestion.entity.BienImmobilier;
 import com.intiformation.gestion.entity.ClasseStd;
 import com.intiformation.gestion.entity.Client;
 import com.intiformation.gestion.entity.Contrat;
-import com.intiformation.gestion.entity.Louer;
 import com.intiformation.gestion.entity.Proprietaire;
 import com.intiformation.gestion.entity.Visite;
 
@@ -188,37 +186,7 @@ public class AgenceDAO implements IAgenceDAO {
 		v.setClient(client);
 		em.persist(v);
 		return v.getId();
-	}
-
-	//CRUD CS Acheter
-
-	public String ajouterCSAcheter(Acheter csAcheter) {
-		em.persist(csAcheter);
-		return csAcheter.getCode();
-	}
-
-	
-
-	public void modifierCSAcheter(Acheter csAcheter) {
-		em.merge( csAcheter);
-		
-	}
-	
-	//CRUD CS Louer
-	
-	public String ajouterCSLouer(Louer csLouer) {
-		em.persist(csLouer);
-		return csLouer.getCode();
-	}
-
-	
-	
-
-	public void modifierCSLouer(Louer csLouer) {
-		
-		em.merge( csLouer);
-	}
-	
+	}	
 	
 	//CRUD Class std
 	public List<ClasseStd> listCSByClient(int idClient) {

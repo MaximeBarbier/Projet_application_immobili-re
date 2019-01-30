@@ -16,7 +16,7 @@ public class Client extends Personne{
 	
 	@ManyToMany
 	@JoinTable(name="clients_listeclasses", 
-			   joinColumns = {@JoinColumn(name = "personne_id")},
+			   joinColumns = {@JoinColumn(name = "clients_id")},
 			   inverseJoinColumns = {@JoinColumn(name = "classestd_id")})
 	private List<ClasseStd> listeClasses;
 	

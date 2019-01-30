@@ -4,19 +4,14 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity(name="class")
 @Table(name="classes_standards")
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="mode_offre")
 public class ClasseStd implements Serializable{
 	
 	/*____________________________________________Attributs__________________________________________________*/
@@ -28,7 +23,7 @@ public class ClasseStd implements Serializable{
 	@Column(name="type_de_bien")
 	private String typeDeBien;
 	
-	@Column(name="mode_offre", insertable = false, updatable = false)
+	@Column(name="mode_offre")
 	private boolean modeOffre;
 	
 	@Column(name="prix_maximum")

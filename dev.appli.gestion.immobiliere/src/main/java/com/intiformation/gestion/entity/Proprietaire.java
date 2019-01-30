@@ -19,14 +19,22 @@ public class Proprietaire extends Personne {
 	private List<BienImmobilier> listeBiens;
 
 	/* CTORS */
-	public Proprietaire(long telephoneTravail, List<BienImmobilier> listeBiens) {
+	public Proprietaire() {
 		super();
+	}
+
+	public Proprietaire(String nom, String adresse, String codePostal, String localite, String telephonePrive,
+			long telephoneTravail, List<BienImmobilier> listeBiens) {
+		super(nom, adresse, codePostal, localite, telephonePrive);
 		this.telephoneTravail = telephoneTravail;
 		this.listeBiens = listeBiens;
 	}
-	
-	public Proprietaire() {
-		super();
+
+	public Proprietaire(int id, String nom, String adresse, String codePostal, String localite, String telephonePrive,
+			long telephoneTravail, List<BienImmobilier> listeBiens) {
+		super(id, nom, adresse, codePostal, localite, telephonePrive);
+		this.telephoneTravail = telephoneTravail;
+		this.listeBiens = listeBiens;
 	}
 
 	/* GETTERS AND SETTERS */

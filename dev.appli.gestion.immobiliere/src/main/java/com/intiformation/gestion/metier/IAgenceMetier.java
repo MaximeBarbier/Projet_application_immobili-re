@@ -2,100 +2,84 @@ package com.intiformation.gestion.metier;
 
 import java.util.List;
 
-import com.intiformation.gestion.entity.Acheter;
 import com.intiformation.gestion.entity.Agent;
 import com.intiformation.gestion.entity.BienImmobilier;
 import com.intiformation.gestion.entity.ClasseStd;
 import com.intiformation.gestion.entity.Client;
 import com.intiformation.gestion.entity.Contrat;
-import com.intiformation.gestion.entity.Louer;
 import com.intiformation.gestion.entity.Proprietaire;
 import com.intiformation.gestion.entity.Visite;
 
 public interface IAgenceMetier {
+
 	// CRUD proprietaire
 
-		public int ajouterProprietaire(Proprietaire p);
+	public int ajouterProprietaire(Proprietaire p);
 
-		public List<Proprietaire> listProprietaires();
+	public List<Proprietaire> listProprietaires();
 
-		public Proprietaire getProprietairebyId(int id);
+	public Proprietaire getProprietairebyId(int id);
 
-		public void supprimerProprietaire(int id);
+	public void supprimerProprietaire(int id);
 
-		public void modifierProprietaire(Proprietaire p);
+	public void modifierProprietaire(Proprietaire p);
 
-		// CRUD bien immobilier
+	// CRUD bien immobilier
 
-		public int ajouterBI(BienImmobilier bi, int idProp);
+	public int ajouterBI(BienImmobilier bi, int idProp);
 
-		public BienImmobilier getBibyId(int id);
+	public BienImmobilier getBibyId(int id);
 
-		public void supprimerBi(int id);
+	public void supprimerBi(int id);
 
-		public void modifierBi(BienImmobilier bi);
+	public void modifierBi(BienImmobilier bi);
 
-		public List<BienImmobilier> getListBIByIdPropietaire(int idProp);
-		
-		public List<BienImmobilier> getListBIByClassSt(String code);
+	public List<BienImmobilier> getListBIByIdPropietaire(int idProp);
 
-		// CRUD Client
+	public List<BienImmobilier> getListBIByClassSt(String code);
 
-		public int ajouterClient(Client c);
+	// CRUD Client
 
-		public List<Client> listClients();
+	public int ajouterClient(Client c);
 
-		public Client getClientbyId(int id);
+	public List<Client> listClients();
 
-		public void supprimerClient(int id);
+	public Client getClientbyId(int id);
 
-		public void modifierClient(Client c);
+	public void supprimerClient(int id);
 
-		// CRUD Classe Standard acheter
+	public void modifierClient(Client c);
 
-		public String ajouterCSAcheter(Acheter csAcheter);
+	// CRUD Classe Standard
+	public List<ClasseStd> listCSByClient(int idClient);
 
-		public void modifierCSAcheter(Acheter csAcheter) ;
+	public void supprimerCS(String code);
 
-		
-		
-		// CRUD Classe Standard louer
-		
-		public String ajouterCSLouer(Louer csLouer);
+	public List<ClasseStd> getListCStdByRef(String code);
 
-		public void modifierCSLouer(Louer csLouer);
+	// CRUD Classe Agent immobilier
 
-		//CRUD Classe Standard 
-		public List<ClasseStd> listCSByClient(int idClient);		
+	public int ajouterAI(Agent ai);
 
-		public void supprimerCS(String code) ;
-		
-		public List<ClasseStd> getListCStdByRef(String code);
+	public List<Agent> getListAgentByBienImmobilier(int idBI);
 
+	public void supprimerAI(int id);
 
-		// CRUD Classe Agent immobilier
+	public Agent getAgentbyId(int id);
 
-		public int ajouterAI(Agent ai);
+	public void modifierAI(Agent ai);
 
-		public List<Agent> getListAgentByBienImmobilier(int idBI);
+	// CRUD Visite
 
-		public void supprimerAI(int id);
+	public int ajouterVisite(Visite v, int idBI, int idAgent, int idClient);
 
-		public Agent getAgentbyId(int id);
+	public List<Visite> getVisiteByAgent(int idAgent);
 
-		public void modifierAI(Agent ai);
+	public List<Visite> getVisiteByBienImmo(int idBI);
 
-		// CRUD Visite
+	// CRUD Contrat
+	public String creerContrat(Contrat c, int idBI, int idAgent, int idClient);
 
-		public int ajouterVisite(Visite v, int idBI, int idAgent, int idClient);
-
-		public List<Visite> getVisiteByAgent(int idAgent);
-
-		public List<Visite> getVisiteByBienImmo(int idBI);
-
-		// CRUD Contrat
-		public String creerContrat(Contrat c, int idBI, int idAgent, int idClient );
-		
-		public List<Contrat> getContratByClientWithRef(int idAgent, String ref);
+	public List<Contrat> getContratByClientWithRef(int idAgent, String ref);
 
 }
