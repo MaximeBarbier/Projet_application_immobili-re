@@ -16,13 +16,13 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity(name="bienImmobilier")
-@Table(name="Bien_immobilier")
+@Table(name="bien_immobilier")
 public class BienImmobilier implements Serializable{
 
 	/* Déclaration des propriétés */
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_Bien")
+	@Column(name="id_bien")
 	private int id;
 	
 	@Column(name="statut")

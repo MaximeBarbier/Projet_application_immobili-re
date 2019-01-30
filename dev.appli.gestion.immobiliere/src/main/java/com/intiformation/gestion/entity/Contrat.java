@@ -12,19 +12,20 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity(name="contrat")
-@Table(name="Contrat")
+@Table(name="contrats")
 public class Contrat implements Serializable {
 
 	/* Déclaration des champs */
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="reference_contrat")
 	private String refContrat;
 	
 	@OneToOne
+	@JoinColumn(name="client_id", referencedColumnName="id_personne")
 	private Client client;
 	
 	@OneToOne
+	@JoinColumn(name="bien_id", referencedColumnName="id_bien")
 	private BienImmobilier bienImmobilier;
 	
 	@JoinColumn(name="agent_id", referencedColumnName="id_agent")
