@@ -44,6 +44,9 @@ public class Agent implements Serializable{
 	@OneToMany(mappedBy="agent")
 	private List<Visite> listeVisites;
 	
+	@OneToMany(mappedBy="agent")
+	private List<Contrat> listeContrats;
+	
 	/*____________________________________________ctor__________________________________________________*/
 	
 	/**

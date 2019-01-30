@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -18,13 +19,16 @@ public class Contrat implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="reference_contrat")
-	private int ref_contrat;
+	private String refContrat;
 	
 	@OneToOne
 	private Client client;
 	
 	@OneToOne
 	private BienImmobilier bienImmobilier;
+	
+	@JoinColumn(name="agent_id", referencedColumnName="id_agent")
+	private Agent agent;
 	
 	/* ctors */
 	/**
@@ -38,19 +42,19 @@ public class Contrat implements Serializable {
 	 * ctor chargé
 	 * @param ref_contrat
 	 */
-	public Contrat(int ref_contrat) {
+	public Contrat(String refContrat) {
 		super();
-		this.ref_contrat = ref_contrat;
+		this.refContrat = refContrat;
 	}
 
 
 	/* Getters et setters */
-	public int getRef_contrat() {
-		return ref_contrat;
+	public String getRefContrat() {
+		return refContrat;
 	}
 
-	public void setRef_contrat(int ref_contrat) {
-		this.ref_contrat = ref_contrat;
+	public void setRefContrat(String refContrat) {
+		this.refContrat = refContrat;
 	}
 
 	public Client getClient() {
@@ -69,10 +73,19 @@ public class Contrat implements Serializable {
 		this.bienImmobilier = bienImmobilier;
 	}
 
+	public Agent getAgent() {
+		return agent;
+	}
+
+	public void setAgent(Agent agent) {
+		this.agent = agent;
+	}
+
 	/*  Méthode toString() */
 	@Override
 	public String toString() {
-		return "Contrat [ref_contrat=" + ref_contrat + "]";
+		return "Contrat [refContrat=" + refContrat + ", client=" + client + ", bienImmobilier=" + bienImmobilier + "]";
 	}
+	
 	
 }
