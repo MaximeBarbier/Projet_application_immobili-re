@@ -3,6 +3,7 @@ package com.intiformation.gestion.entity;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -10,8 +11,12 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.Proxy;
+
 @Entity(name="class")
 @Table(name="classes_standards")
+@Proxy(lazy = false)
 public class ClasseStd implements Serializable{
 	
 	/*____________________________________________Attributs__________________________________________________*/
@@ -24,7 +29,7 @@ public class ClasseStd implements Serializable{
 	private String typeDeBien;
 	
 	@Column(name="mode_offre")
-	private boolean modeOffre;
+	private String modeOffre;
 	
 	@Column(name="prix_maximum")
 	private double prixMax; 
@@ -32,10 +37,10 @@ public class ClasseStd implements Serializable{
 	@Column(name="superficie_minimum")
 	private double superficieMin;
 	
-	@OneToMany(mappedBy="classeStd")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="classeStd")
 	private List<BienImmobilier> listeBienImmobiliers;
 	
-	@ManyToMany(mappedBy="listeClasses")
+	@ManyToMany(cascade = CascadeType.ALL, mappedBy="listeClasses")
 	private List<Client> listeClients;
 	
 	/*____________________________________________ctor__________________________________________________*/
@@ -57,7 +62,7 @@ public class ClasseStd implements Serializable{
 	 * @param listeBienImmobiliers
 	 * @param listeClients
 	 */
-	public ClasseStd(String code, String typeDeBien, boolean modeOffre, double prixMax, double superficieMin,
+	public ClasseStd(String code, String typeDeBien, String modeOffre, double prixMax, double superficieMin,
 			List<BienImmobilier> listeBienImmobiliers, List<Client> listeClients) {
 		super();
 		this.code = code;
@@ -85,11 +90,11 @@ public class ClasseStd implements Serializable{
 		this.typeDeBien = typeDeBien;
 	}
 
-	public boolean isModeOffre() {
+	public String isModeOffre() {
 		return modeOffre;
 	}
 
-	public void setModeOffre(boolean modeOffre) {
+	public void setModeOffre(String modeOffre) {
 		this.modeOffre = modeOffre;
 	}
 

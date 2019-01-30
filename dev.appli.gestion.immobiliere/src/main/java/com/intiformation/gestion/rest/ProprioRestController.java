@@ -15,18 +15,15 @@ import com.intiformation.gestion.metier.IAgenceMetier;
 
 @RestController
 @RequestMapping("/propriotWs")
-
 public class ProprioRestController {
-	
-	
 
 	/**
 	 * déclaration et injection du ws 
 	 */
 	@Autowired
     IAgenceMetier agenceMetier;
+	
 	//setter du service
-
 	public IAgenceMetier getAgenceMetier() {
 		return agenceMetier;
 	}

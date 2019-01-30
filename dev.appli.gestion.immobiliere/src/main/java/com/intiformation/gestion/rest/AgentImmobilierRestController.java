@@ -19,12 +19,12 @@ import com.intiformation.gestion.metier.IAgenceMetier;
 public class AgentImmobilierRestController {
 
 	/**
-	 * déclaration et injection du ws 
+	 * déclaration et injection du ws
 	 */
 	@Autowired
-    IAgenceMetier agenceMetier;
-	//setter du service
-
+	IAgenceMetier agenceMetier;
+	
+	// setter du service
 	public IAgenceMetier getAgenceMetier() {
 		return agenceMetier;
 	}
@@ -32,62 +32,59 @@ public class AgentImmobilierRestController {
 	public void setAgenceMetier(IAgenceMetier agenceMetier) {
 		this.agenceMetier = agenceMetier;
 	}
-	/*_______________________________________   Methodes_____________________________________________*/
+
+	/*
+	 * _______________________________________
+	 * Methodes_____________________________________________
+	 */
 	/**
 	 * getAllClients
 	 */
-	
-	@RequestMapping(value ="/listeAgents/{agentByBienImmobilier}", method = RequestMethod.GET)
-	
-	public List<Agent>getAllAgents(@PathVariable("agentByBienImmobilier")int id){
+
+	@RequestMapping(value = "/listeAgents/{agentByBienImmobilier}", method = RequestMethod.GET)
+
+	public List<Agent> getAllAgents(@PathVariable("agentByBienImmobilier") int id) {
 		return agenceMetier.getListAgentByBienImmobilier(id);
-	}//fin getAllClients
-	
+	}
+
 	/**
 	 * getClientsById
+	 * 
 	 * @return
 	 */
-	@RequestMapping(value="/listeAgents/{agentById}",method=RequestMethod.GET)
-	public Agent getAgentById (@PathVariable("agentById")int id) {
-		return agenceMetier.getAgentbyId(id);	
-		
-	}//getClasseStdById
-	
+	@RequestMapping(value = "/listeAgents/{agentById}", method = RequestMethod.GET)
+	public Agent getAgentById(@PathVariable("agentById") int id) {
+		return agenceMetier.getAgentbyId(id);
+
+	}// getClasseStdById
+
 	/**
 	 * addClasseStd
 	 */
-    @RequestMapping(value = "/createAgent", method = RequestMethod.POST)
-	public void addAgent(@RequestBody Agent agent ) {
+	@RequestMapping(value = "/createAgent", method = RequestMethod.POST)
+	public void addAgent(@RequestBody Agent agent) {
 		agenceMetier.ajouterAI(agent);
-		
-		
-	}//fin addClient
-	
+
+	}// fin addClient
+
 	/**
 	 * updateClasseStd
 	 */
 
-    @RequestMapping(value="/listeAgents/{agentById}",method = RequestMethod.PUT)
-    public void updateAgent (@RequestBody Agent agent) {
-    	
-    	agenceMetier.modifierAI(agent);
-		
-    	
-    }//fin de modifierClient
+	@RequestMapping(value = "/listeAgents/{agentById}", method = RequestMethod.PUT)
+	public void updateAgent(@RequestBody Agent agent) {
 
-    
-    /**
-     * deleteClient
-     */
-    @RequestMapping(value="/listeAgents/{agentById}",method = RequestMethod.DELETE)
-    public void deleteAgent(@PathVariable("agentById")int id){
-    	
-    agenceMetier.supprimerAI(id);
-    }//fin deleteClient
-    
+		agenceMetier.modifierAI(agent);
 
+	}// fin de modifierClient
 
-}//end class
-	
+	/**
+	 * deleteClient
+	 */
+	@RequestMapping(value = "/listeAgents/{agentById}", method = RequestMethod.DELETE)
+	public void deleteAgent(@PathVariable("agentById") int id) {
 
+		agenceMetier.supprimerAI(id);
+	}// fin deleteClient
 
+}// end class

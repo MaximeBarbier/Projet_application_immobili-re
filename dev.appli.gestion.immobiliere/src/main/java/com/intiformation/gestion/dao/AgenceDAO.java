@@ -35,7 +35,7 @@ public class AgenceDAO implements IAgenceDAO {
 		this.em = em;
 	}
 	
-	//CRUD Proprietire
+	//CRUD Proprietaire
 
 	public int ajouterProprietaire(Proprietaire p) {
 		em.persist(p);

@@ -1,7 +1,8 @@
 package com.intiformation.gestion.metier.test;
 
-import com.intiformation.gestion.entity.Proprietaire;
 import com.intiformation.gestion.metier.AgenceMetier;
+import com.intiformation.gestion.metier.IAgenceMetier;
+import com.intiformation.gestion.entity.Proprietaire;
 
 import static org.junit.Assert.*;
 
@@ -15,7 +16,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 public class AgenceMetierTest {
 	
-	private AgenceMetier agencemetier;
+	private IAgenceMetier agencemetier;
 	private Proprietaire p;
 	int id = p.getId();
 	
@@ -68,7 +69,10 @@ public class AgenceMetierTest {
 		Proprietaire prop = null;
 		
 		
-		p = new Proprietaire(4, "Claude François", "Au paradis", "0654878956");
+		p = new Proprietaire();
+		p.setNom("Barbier");
+		p.setAdresse("63 rue molière");
+		p.setCodePostal("78280");
 		
 		
 		assertEquals(agencemetier.ajouterProprietaire(prop), agencemetier.ajouterProprietaire(p));
@@ -83,7 +87,7 @@ public class AgenceMetierTest {
 		
 		System.out.println("\t\t > Cas de test : méthode listePropriétaire");
 		
-		p = new Proprietaire(4, "Claude François", "999 rue du paradis", "0654878956");
+		Proprietaire p = new Proprietaire();
 		
 		agencemetier.ajouterProprietaire(p);
 		

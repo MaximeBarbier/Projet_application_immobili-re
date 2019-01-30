@@ -2,6 +2,7 @@ package com.intiformation.gestion.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -10,20 +11,23 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Proxy;
+
 @Entity(name="client")
 @Table(name="clients")
+@Proxy(lazy = false)
 public class Client extends Personne{
 	
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name="clients_listeclasses", 
 			   joinColumns = {@JoinColumn(name = "clients_id")},
 			   inverseJoinColumns = {@JoinColumn(name = "classestd_id")})
 	private List<ClasseStd> listeClasses;
 	
-	@OneToMany(mappedBy="client")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="client")
 	private List<Visite> listeVisites;
 	
-	@OneToOne(mappedBy="client")
+	@OneToOne(cascade = CascadeType.ALL, mappedBy="client")
 	private Contrat contrat;
 
 	/* CTOR */

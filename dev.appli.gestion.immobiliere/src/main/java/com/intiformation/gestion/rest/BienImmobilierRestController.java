@@ -57,14 +57,14 @@ public class BienImmobilierRestController {
 		return agenceMetier.getBibyId(id);
 	}
 	
-	@RequestMapping(value="/listBienImmobilier/{BIByIdProprietaire}",method=RequestMethod.POST)
-	public int addBI(@RequestBody BienImmobilier bi,@PathVariable("BIByIdProprietaire") int idProp) {
-		return agenceMetier.ajouterBI(bi, idProp);
-	}
-	
-	@RequestMapping(value="/listBienImmobilier/{BIById}",method=RequestMethod.PUT)
-	public void updateBi(@RequestBody BienImmobilier bi) {
-		agenceMetier.modifierBi(bi);
-	}
+//	@RequestMapping(value="/listBienImmobilier/{BIByIdProprietaire}",method=RequestMethod.POST)
+//	public int addBI(@RequestBody BienImmobilier bi,@PathVariable("BIByIdProprietaire") int idProp) {
+//		return agenceMetier.ajouterBiAAcheter(biA, idProp);
+//	}
+//	
+//	@RequestMapping(value="/listBienImmobilier/{BIById}",method=RequestMethod.PUT)
+//	public void updateBi(@RequestBody BienImmobilier bi) {
+//		agenceMetier.modifierBiAAcheter(biA);
+//	}
 
 }

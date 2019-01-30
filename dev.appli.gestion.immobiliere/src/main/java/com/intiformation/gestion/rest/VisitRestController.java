@@ -55,12 +55,12 @@ public class VisitRestController {
 	/**
 	 * addClasseStd
 	 */
-    @RequestMapping(value = "/createVisit/{visiteByAgent}", method = RequestMethod.POST)
-	public void addVisit(@PathVariable("visiteByAgent")int id, @RequestBody Visite visite  ) {
-		agenceMetier.ajouterVisite(visite, id);
-		
-		
-	}//fin addClient
+//    @RequestMapping(value = "/createVisit/{visiteByAgent}", method = RequestMethod.POST)
+//	public void addVisit(@PathVariable("visiteByAgent")int id, @RequestBody Visite visite  ) {
+//		agenceMetier.ajouterVisite(visite, id);
+//		
+//		
+//	}//fin addClient
 	
 
 }//end class

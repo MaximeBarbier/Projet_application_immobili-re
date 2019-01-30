@@ -46,24 +46,24 @@ public class ClasseStdRestController {
 	/**
 	 * addClasseStd
 	 */
-    @RequestMapping(value = "/createClasseStd", method = RequestMethod.POST)
-	public void addClasseStd(@RequestBody ClasseStd classeStd ) {
-		agenceMetier.ajouterCS(classeStd);
-		
-		
-	}//fin addClient
+//    @RequestMapping(value = "/createClasseStd", method = RequestMethod.POST)
+//	public void addClasseStd(@RequestBody ClasseStd classeStd ) {
+//		agenceMetier.ajouterCS(classeStd);
+//		
+//		
+//	}//fin addClient
 	
 	/**
 	 * updateClasseStd
 	 */
 
-    @RequestMapping(value="/listeClasseStd/{classeStdByClient}",method = RequestMethod.PUT)
-    public void updateClasseStd (@RequestBody ClasseStd classeStd) {
-    	
-    	agenceMetier.modifierCS(classeStd);
-		
-    	
-    }//fin de modifierClient
+//    @RequestMapping(value="/listeClasseStd/{classeStdByClient}",method = RequestMethod.PUT)
+//    public void updateClasseStd (@RequestBody ClasseStd classeStd) {
+//    	
+//    	agenceMetier.modifierCS(classeStd);
+//		
+//    	
+//    }//fin de modifierClient
 
     
     /**

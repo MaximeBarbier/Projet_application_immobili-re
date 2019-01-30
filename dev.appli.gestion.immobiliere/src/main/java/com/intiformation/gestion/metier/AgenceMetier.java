@@ -34,13 +34,13 @@ public class AgenceMetier implements IAgenceMetier {
 		return agenceDAO.ajouterProprietaire(p);
 	}
 
-	@Transactional(readOnly = true)
+	@Transactional
 	public List<Proprietaire> listProprietaires() {
 
 		return agenceDAO.listProprietaires();
 	}
 
-	@Transactional(readOnly = true)
+	@Transactional
 	public Proprietaire getProprietairebyId(int id) {
 
 		return agenceDAO.getProprietairebyId(id);
@@ -60,7 +60,7 @@ public class AgenceMetier implements IAgenceMetier {
 	// CRUD bien immobilier
 
 	
-	@Transactional(readOnly = true)
+	@Transactional
 	public BienImmobilier getBibyId(int id) {
 
 		return agenceDAO.getBibyId(id);
@@ -72,19 +72,19 @@ public class AgenceMetier implements IAgenceMetier {
 
 	}
 	
-	@Transactional(readOnly = true)
+	@Transactional
 	public List<BienImmobilier> listBi() {
 		
 		return agenceDAO.listBi();
 	}
 
-	@Transactional(readOnly = true)
+	@Transactional
 	public List<BienImmobilier> getListBIByIdPropietaire(int idProp) {
 
 		return agenceDAO.getListBIByIdPropietaire(idProp);
 	}
 
-	@Transactional(readOnly = true)
+	@Transactional
 	public List<BienImmobilier> getListBIByClassSt(String code) {
 
 		return agenceDAO.getListBIByClassSt(code);
@@ -102,7 +102,7 @@ public class AgenceMetier implements IAgenceMetier {
 		
 	}
 	
-	@Transactional(readOnly = true)
+	@Transactional
 	public List<BienALouer> getListBiALouer() {
 		
 		return agenceDAO.getListBiALouer();
@@ -119,7 +119,7 @@ public class AgenceMetier implements IAgenceMetier {
 		agenceDAO.modifierBiAAcheter(biA);
 		
 	}
-	@Transactional(readOnly = true)
+	@Transactional
 	public List<BienAAcheter> getListBiAAcheter() {
 		
 		return agenceDAO.getListBiAAcheter();
@@ -132,13 +132,13 @@ public class AgenceMetier implements IAgenceMetier {
 		return agenceDAO.ajouterClient(c);
 	}
 
-	@Transactional(readOnly = true)
+	@Transactional
 	public List<Client> listClients() {
 
 		return agenceDAO.listClients();
 	}
 
-	@Transactional(readOnly = true)
+	@Transactional
 	public Client getClientbyId(int id) {
 
 		return agenceDAO.getClientbyId(id);
@@ -157,7 +157,7 @@ public class AgenceMetier implements IAgenceMetier {
 	}
 
 	// CRUD classe std
-	@Transactional(readOnly = true)
+	@Transactional
 	public List<ClasseStd> listCSByClient(int idClient) {
 
 		return agenceDAO.listCSByClient(idClient);
@@ -169,7 +169,7 @@ public class AgenceMetier implements IAgenceMetier {
 
 	}
 
-	@Transactional(readOnly = true)
+	@Transactional
 	public List<ClasseStd> getListCStdByRef(String code) {
 
 		return agenceDAO.getListCStdByRef(code);
@@ -183,7 +183,7 @@ public class AgenceMetier implements IAgenceMetier {
 		return agenceDAO.ajouterAI(ai);
 	}
 
-	@Transactional(readOnly = true)
+	@Transactional
 	public List<Agent> getListAgentByBienImmobilier(int idBI) {
 
 		return agenceDAO.getListAgentByBienImmobilier(idBI);
@@ -195,7 +195,7 @@ public class AgenceMetier implements IAgenceMetier {
 
 	}
 
-	@Transactional(readOnly = true)
+	@Transactional
 	public Agent getAgentbyId(int id) {
 
 		return agenceDAO.getAgentbyId(id);
@@ -214,13 +214,13 @@ public class AgenceMetier implements IAgenceMetier {
 		return agenceDAO.ajouterVisite(v, idBI, idAgent, idClient);
 	}
 
-	@Transactional(readOnly = true)
+	@Transactional
 	public List<Visite> getVisiteByAgent(int idAgent) {
 
 		return agenceDAO.getVisiteByAgent(idAgent);
 	}
 
-	@Transactional(readOnly = true)
+	@Transactional
 	public List<Visite> getVisiteByBienImmo(int idBI) {
 
 		return agenceDAO.getVisiteByBienImmo(idBI);
@@ -233,7 +233,7 @@ public class AgenceMetier implements IAgenceMetier {
 		return agenceDAO.creerContrat(c, idBI, idAgent, idClient);
 	}
 
-	@Transactional(readOnly = true)
+	@Transactional
 	public List<Contrat> getContratByClientWithRef(int idAgent, String ref) {
 
 		return agenceDAO.getContratByClientWithRef(idAgent, ref);
