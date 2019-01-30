@@ -10,26 +10,26 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.intiformation.gestion.entity.BienImmobilier;
-import com.intiformation.gestion.metier.AgenceMetier;
+import com.intiformation.gestion.metier.IAgenceMetier;
 
 @RestController
 @RequestMapping("/bienImmobilierWs")
 public class BienImmobilierRestController {
 	
 	@Autowired
-	private AgenceMetier agenceMetier;
+	IAgenceMetier agenceMetier;
 
 	/**
 	 * @return the agenceMetier
 	 */
-	public AgenceMetier getAgenceMetier() {
+	public IAgenceMetier getAgenceMetier() {
 		return agenceMetier;
 	}
 
 	/**
-	 * @param agencemetier the agencemetier to set
+	 * @param agencemetier the agenceMetier to set
 	 */
-	public void setAgenceMetier(AgenceMetier agenceMetier) {
+	public void setAgenceMetier(IAgenceMetier agenceMetier) {
 		this.agenceMetier = agenceMetier;
 	}
 	
