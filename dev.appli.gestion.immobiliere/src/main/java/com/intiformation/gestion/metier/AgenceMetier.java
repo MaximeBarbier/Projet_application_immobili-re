@@ -9,10 +9,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.intiformation.gestion.dao.IAgenceDAO;
+import com.intiformation.gestion.entity.Acheter;
 import com.intiformation.gestion.entity.Agent;
 import com.intiformation.gestion.entity.BienImmobilier;
 import com.intiformation.gestion.entity.ClasseStd;
 import com.intiformation.gestion.entity.Client;
+import com.intiformation.gestion.entity.Louer;
 import com.intiformation.gestion.entity.Proprietaire;
 import com.intiformation.gestion.entity.Visite;
 
@@ -27,6 +29,7 @@ public class AgenceMetier implements IAgenceMetier{
 		this.agenceDAO = agenceDAO;
 	}
 
+	//crud proprietaire
 	@Transactional
 	public int ajouterProprietaire(Proprietaire p) {
 	
@@ -52,6 +55,8 @@ public class AgenceMetier implements IAgenceMetier{
 		agenceDAO.modifierProprietaire(p);
 		
 	}
+	//CRUD bien immobilier 
+	
 	@Transactional
 	public int ajouterBI(BienImmobilier bi, int idProp) {
 		
@@ -77,6 +82,15 @@ public class AgenceMetier implements IAgenceMetier{
 		
 		return agenceDAO.getListBIByIdPropietaire(idProp);
 	}
+	
+	@Transactional(readOnly=true)
+	public List<BienImmobilier> getListBIByClassSt(String code) {
+		
+		return agenceDAO.getListBIByClassSt(code);
+	}
+	
+	//CRUD CLIENT
+	
 	@Transactional
 	public int ajouterClient(Client c) {
 		
@@ -102,11 +116,8 @@ public class AgenceMetier implements IAgenceMetier{
 		agenceDAO.modifierClient(c);
 		
 	}
-	@Transactional
-	public String ajouterCS(ClasseStd cs) {
-		
-		return agenceDAO.ajouterCS(cs);
-	}
+	
+	//CRUD classe std
 	@Transactional(readOnly=true)
 	public List<ClasseStd> listCSByClient(int idClient) {
 		
@@ -117,11 +128,39 @@ public class AgenceMetier implements IAgenceMetier{
 		agenceDAO.supprimerCS(code);
 		
 	}
+	@Transactional(readOnly=true)
+	public List<ClasseStd> getListCStdByRef(String code) {
+		
+		return agenceDAO.getListCStdByRef(code);
+	}
+	
+	//CRUD Classe STD acheter 
 	@Transactional
-	public void modifierCS(ClasseStd cs) {
-		agenceDAO.modifierCS(cs);
+	public String ajouterCSAcheter(Acheter csAcheter) {
+	
+		return agenceDAO.ajouterCSAcheter(csAcheter);
+	}
+	@Transactional
+	public void modifierCSAcheter(Acheter csAcheter) {
+		agenceDAO.modifierCSAcheter(csAcheter);
+	}
+	
+	//CRUD Classe STD Louer 
+	@Transactional
+	public String ajouterCSLouer(Louer csLouer) {
+		
+		return agenceDAO.ajouterCSLouer(csLouer);
+	}
+	@Transactional
+	public void modifierCSLouer(Louer csLouer) {
+		agenceDAO.modifierCSLouer(csLouer);
 		
 	}
+
+	
+	//CRUD AGENT
+	
+	
 	@Transactional
 	public int ajouterAI(Agent ai) {
 		
@@ -146,7 +185,11 @@ public class AgenceMetier implements IAgenceMetier{
 	public void modifierAI(Agent ai) {
 		agenceDAO.modifierAI(ai);
 		
+		
 	}
+	
+	//CRUD visite
+	
 	@Transactional
 	public int ajouterVisite(Visite v, int idBi) {
 		
@@ -163,10 +206,11 @@ public class AgenceMetier implements IAgenceMetier{
 		return agenceDAO.getVisiteByBienImmo(idBI);
 	}
 
-	@Transactional(readOnly=true)
-	public List<BienImmobilier> getListBIByClassSt(String code) {
-		
-		return agenceDAO.getListBIByClassSt(code);
-	}
+	
+
+	
+	
+
+	
 
 }

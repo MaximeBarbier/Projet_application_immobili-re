@@ -2,10 +2,12 @@ package com.intiformation.gestion.metier;
 
 import java.util.List;
 
+import com.intiformation.gestion.entity.Acheter;
 import com.intiformation.gestion.entity.Agent;
 import com.intiformation.gestion.entity.BienImmobilier;
 import com.intiformation.gestion.entity.ClasseStd;
 import com.intiformation.gestion.entity.Client;
+import com.intiformation.gestion.entity.Louer;
 import com.intiformation.gestion.entity.Proprietaire;
 import com.intiformation.gestion.entity.Visite;
 
@@ -33,6 +35,7 @@ public interface IAgenceMetier {
 		public void modifierBi(BienImmobilier bi);
 
 		public List<BienImmobilier> getListBIByIdPropietaire(int idProp);
+		
 		public List<BienImmobilier> getListBIByClassSt(String code);
 
 		// CRUD Client
@@ -47,15 +50,27 @@ public interface IAgenceMetier {
 
 		public void modifierClient(Client c);
 
-		// CRUD Classe Standard
+		// CRUD Classe Standard acheter
 
-		public String ajouterCS(ClasseStd cs);
+		public String ajouterCSAcheter(Acheter csAcheter);
 
-		public List<ClasseStd> listCSByClient(int idClient);
+		public void modifierCSAcheter(Acheter csAcheter) ;
 
-		public void supprimerCS(String code);
+		
+		
+		// CRUD Classe Standard louer
+		
+		public String ajouterCSLouer(Louer csLouer);
 
-		public void modifierCS(ClasseStd cs);
+		public void modifierCSLouer(Louer csLouer);
+
+		//CRUD Classe Standard 
+		public List<ClasseStd> listCSByClient(int idClient);		
+
+		public void supprimerCS(String code) ;
+		
+		public List<ClasseStd> getListCStdByRef(String code);
+
 
 		// CRUD Classe Agent immobilier
 
