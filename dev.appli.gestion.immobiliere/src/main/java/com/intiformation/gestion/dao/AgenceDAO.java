@@ -9,6 +9,8 @@ import javax.persistence.Query;
 import org.springframework.stereotype.Repository;
 
 import com.intiformation.gestion.entity.Agent;
+import com.intiformation.gestion.entity.BienAAcheter;
+import com.intiformation.gestion.entity.BienALouer;
 import com.intiformation.gestion.entity.BienImmobilier;
 import com.intiformation.gestion.entity.ClasseStd;
 import com.intiformation.gestion.entity.Client;
@@ -62,13 +64,7 @@ public class AgenceDAO implements IAgenceDAO {
 	}
 
 	//CRUD BI
-	public int ajouterBI(BienImmobilier bi, int idProp) {
-		Proprietaire p = getProprietairebyId(idProp);
-		bi.setProprietaire(p);
-		em.persist(bi);
-		return bi.getId();
-	}
-
+	
 	public List<BienImmobilier> listBi() {
 
 		Query query = em.createQuery("SELECT bi from bienImmobilier bi");
@@ -82,11 +78,7 @@ public class AgenceDAO implements IAgenceDAO {
 
 	}
 
-	public void modifierBi(BienImmobilier bi) {
-		em.merge(bi);
-
-	}
-
+	
 	public List<BienImmobilier> getListBIByIdPropietaire(int idProp) {
 		Query query = em.createQuery("SELECT bi from bienImmobilier bi where bi.proprietaire.id= ?1");
 		query.setParameter(1, idProp);
@@ -104,7 +96,47 @@ public class AgenceDAO implements IAgenceDAO {
 		query.setParameter(1, code);
 		return query.getResultList();
 	}
+	
+	// CRUD BIEN IMMOBILIER A ACHETER 
+		public void ajouterBiAAcheter(BienAAcheter biA, int idProp) {
+			Proprietaire p = em.find (Proprietaire.class, idProp);
+			biA.setProprietaire(p);
+			em.persist(biA);
+			
+		}
 
+		public void modifierBiAAcheter(BienAAcheter biA) {
+			em.merge(biA);
+			
+		}
+
+		public List<BienAAcheter> getListBiAAcheter() {
+			Query query=em.createQuery("select bi from bienImmobilier where bi.modeOffre='aacheter'");
+			
+			return query.getResultList();
+		}
+	
+	//CRUD BI A LOUER 
+		
+		public void ajouterBiALouer(BienALouer biL, int idProp) {
+			Proprietaire p = em.find (Proprietaire.class, idProp);
+			biL.setProprietaire(p);
+			em.persist(biL);
+			
+		}
+
+		public void modifierBiALouer(BienALouer biL) {
+			em.merge(biL);
+			
+		}
+
+		public List<BienALouer> getListBiALouer() {
+			Query query=em.createQuery("select bi from bienImmobilier where bi.modeOffre='alouer'");
+			
+			return query.getResultList();
+			
+		}
+		
 	//CRUD Client 
 	
 	public int ajouterClient(Client c) {
@@ -227,6 +259,9 @@ public class AgenceDAO implements IAgenceDAO {
 		return query.getResultList();
 		
 	}
+	
+	
+	
 
 
 }

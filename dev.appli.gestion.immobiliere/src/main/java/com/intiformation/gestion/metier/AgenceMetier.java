@@ -8,6 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.intiformation.gestion.dao.IAgenceDAO;
 import com.intiformation.gestion.entity.Agent;
+import com.intiformation.gestion.entity.BienAAcheter;
+import com.intiformation.gestion.entity.BienALouer;
 import com.intiformation.gestion.entity.BienImmobilier;
 import com.intiformation.gestion.entity.ClasseStd;
 import com.intiformation.gestion.entity.Client;
@@ -57,12 +59,7 @@ public class AgenceMetier implements IAgenceMetier {
 	}
 	// CRUD bien immobilier
 
-	@Transactional
-	public int ajouterBI(BienImmobilier bi, int idProp) {
-
-		return agenceDAO.ajouterBI(bi, idProp);
-	}
-
+	
 	@Transactional(readOnly = true)
 	public BienImmobilier getBibyId(int id) {
 
@@ -74,11 +71,11 @@ public class AgenceMetier implements IAgenceMetier {
 		agenceDAO.supprimerBi(id);
 
 	}
-
-	@Transactional
-	public void modifierBi(BienImmobilier bi) {
-		agenceDAO.modifierBi(bi);
-
+	
+	@Transactional(readOnly = true)
+	public List<BienImmobilier> listBi() {
+		
+		return agenceDAO.listBi();
 	}
 
 	@Transactional(readOnly = true)
@@ -92,7 +89,41 @@ public class AgenceMetier implements IAgenceMetier {
 
 		return agenceDAO.getListBIByClassSt(code);
 	}
-
+	
+	//CRUD bien à LOUER 
+	@Transactional
+	public void ajouterBiALouer(BienALouer biL, int idProp) {
+		agenceDAO.ajouterBiALouer(biL, idProp);
+		
+	}
+	@Transactional
+	public void modifierBiALouer(BienALouer biL) {
+		agenceDAO.modifierBiALouer(biL);
+		
+	}
+	
+	@Transactional(readOnly = true)
+	public List<BienALouer> getListBiALouer() {
+		
+		return agenceDAO.getListBiALouer();
+	}
+	
+	//CRUD bien à vendre 
+	@Transactional
+	public void ajouterBiAAcheter(BienAAcheter biA, int idProp) {
+		agenceDAO.ajouterBiAAcheter(biA, idProp);
+		
+	}
+	@Transactional
+	public void modifierBiAAcheter(BienAAcheter biA) {
+		agenceDAO.modifierBiAAcheter(biA);
+		
+	}
+	@Transactional(readOnly = true)
+	public List<BienAAcheter> getListBiAAcheter() {
+		
+		return agenceDAO.getListBiAAcheter();
+	}
 	// CRUD CLIENT
 
 	@Transactional
@@ -207,5 +238,11 @@ public class AgenceMetier implements IAgenceMetier {
 
 		return agenceDAO.getContratByClientWithRef(idAgent, ref);
 	}
+
+	
+
+	
+
+	
 
 }

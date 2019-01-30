@@ -3,6 +3,8 @@ package com.intiformation.gestion.metier;
 import java.util.List;
 
 import com.intiformation.gestion.entity.Agent;
+import com.intiformation.gestion.entity.BienAAcheter;
+import com.intiformation.gestion.entity.BienALouer;
 import com.intiformation.gestion.entity.BienImmobilier;
 import com.intiformation.gestion.entity.ClasseStd;
 import com.intiformation.gestion.entity.Client;
@@ -14,72 +16,87 @@ public interface IAgenceMetier {
 
 	// CRUD proprietaire
 
-	public int ajouterProprietaire(Proprietaire p);
+		public int ajouterProprietaire(Proprietaire p);
 
-	public List<Proprietaire> listProprietaires();
+		public List<Proprietaire> listProprietaires();
 
-	public Proprietaire getProprietairebyId(int id);
+		public Proprietaire getProprietairebyId(int id);
 
-	public void supprimerProprietaire(int id);
+		public void supprimerProprietaire(int id);
 
-	public void modifierProprietaire(Proprietaire p);
+		public void modifierProprietaire(Proprietaire p);
 
-	// CRUD bien immobilier
+		//CRUD bien immo à acheter
+		
+		public void ajouterBiAAcheter(BienAAcheter biA, int idProp);
+		public void modifierBiAAcheter(BienAAcheter biA);
+		public List<BienAAcheter> getListBiAAcheter();
+		
+		
+		//CRUD bien immo à louer 
+		
+		public void ajouterBiALouer(BienALouer biL, int idProp);
+		public void modifierBiALouer(BienALouer biL);
+		public List<BienALouer> getListBiALouer();
+		
+		
+		// CRUD bien immobilier
 
-	public int ajouterBI(BienImmobilier bi, int idProp);
+		public void supprimerBi(int id);
+		
+		public List <BienImmobilier> listBi();
+		
+		public BienImmobilier getBibyId(int id);
+		
+		public List<BienImmobilier> getListBIByIdPropietaire(int idProp);
+		
+		public List<BienImmobilier> getListBIByClassSt(String code);
 
-	public BienImmobilier getBibyId(int id);
+		// CRUD Client
 
-	public void supprimerBi(int id);
+		public int ajouterClient(Client c);
 
-	public void modifierBi(BienImmobilier bi);
+		public List<Client> listClients();
 
-	public List<BienImmobilier> getListBIByIdPropietaire(int idProp);
+		public Client getClientbyId(int id);
 
-	public List<BienImmobilier> getListBIByClassSt(String code);
+		public void supprimerClient(int id);
 
-	// CRUD Client
+		public void modifierClient(Client c);
 
-	public int ajouterClient(Client c);
+		//CRUD Classe Standard 
+		
+		public List<ClasseStd> listCSByClient(int idClient);
 
-	public List<Client> listClients();
+		public void supprimerCS(String code) ;
+		
+		public List<ClasseStd> getListCStdByRef(String code);
 
-	public Client getClientbyId(int id);
 
-	public void supprimerClient(int id);
+		// CRUD Classe Agent immobilier
 
-	public void modifierClient(Client c);
+		public int ajouterAI(Agent ai);
 
-	// CRUD Classe Standard
-	public List<ClasseStd> listCSByClient(int idClient);
+		public List<Agent> getListAgentByBienImmobilier(int idBI);
 
-	public void supprimerCS(String code);
+		public void supprimerAI(int id);
 
-	public List<ClasseStd> getListCStdByRef(String code);
+		public Agent getAgentbyId(int id);
 
-	// CRUD Classe Agent immobilier
+		public void modifierAI(Agent ai);
 
-	public int ajouterAI(Agent ai);
+		// CRUD Visite
 
-	public List<Agent> getListAgentByBienImmobilier(int idBI);
+		public int ajouterVisite(Visite v, int idBI, int idAgent, int idClient);
 
-	public void supprimerAI(int id);
+		public List<Visite> getVisiteByAgent(int idAgent);
 
-	public Agent getAgentbyId(int id);
+		public List<Visite> getVisiteByBienImmo(int idBI);
 
-	public void modifierAI(Agent ai);
-
-	// CRUD Visite
-
-	public int ajouterVisite(Visite v, int idBI, int idAgent, int idClient);
-
-	public List<Visite> getVisiteByAgent(int idAgent);
-
-	public List<Visite> getVisiteByBienImmo(int idBI);
-
-	// CRUD Contrat
-	public String creerContrat(Contrat c, int idBI, int idAgent, int idClient);
-
-	public List<Contrat> getContratByClientWithRef(int idAgent, String ref);
+		// CRUD Contrat
+		
+		public String creerContrat(Contrat c, int idBI, int idAgent, int idClient );
+		
+		public List<Contrat> getContratByClientWithRef(int idAgent, String ref);
 
 }

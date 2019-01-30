@@ -3,6 +3,8 @@ package com.intiformation.gestion.dao;
 import java.util.List;
 
 import com.intiformation.gestion.entity.Agent;
+import com.intiformation.gestion.entity.BienAAcheter;
+import com.intiformation.gestion.entity.BienALouer;
 import com.intiformation.gestion.entity.BienImmobilier;
 import com.intiformation.gestion.entity.ClasseStd;
 import com.intiformation.gestion.entity.Client;
@@ -24,16 +26,28 @@ public interface IAgenceDAO {
 
 	public void modifierProprietaire(Proprietaire p);
 
+	//CRUD bien immo à acheter
+	
+	public void ajouterBiAAcheter(BienAAcheter biA, int idProp);
+	public void modifierBiAAcheter(BienAAcheter biA);
+	public List<BienAAcheter> getListBiAAcheter();
+	
+	
+	//CRUD bien immo à louer 
+	
+	public void ajouterBiALouer(BienALouer biL, int idProp);
+	public void modifierBiALouer(BienALouer biL);
+	public List<BienALouer> getListBiALouer();
+	
+	
 	// CRUD bien immobilier
 
-	public int ajouterBI(BienImmobilier bi, int idProp);
-
-	public BienImmobilier getBibyId(int id);
-
 	public void supprimerBi(int id);
-
-	public void modifierBi(BienImmobilier bi);
-
+	
+	public List <BienImmobilier> listBi();
+	
+	public BienImmobilier getBibyId(int id);
+	
 	public List<BienImmobilier> getListBIByIdPropietaire(int idProp);
 	
 	public List<BienImmobilier> getListBIByClassSt(String code);
