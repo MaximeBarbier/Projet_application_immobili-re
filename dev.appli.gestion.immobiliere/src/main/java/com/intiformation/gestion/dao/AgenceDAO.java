@@ -13,6 +13,7 @@ import com.intiformation.gestion.entity.Agent;
 import com.intiformation.gestion.entity.BienImmobilier;
 import com.intiformation.gestion.entity.ClasseStd;
 import com.intiformation.gestion.entity.Client;
+import com.intiformation.gestion.entity.Contrat;
 import com.intiformation.gestion.entity.Louer;
 import com.intiformation.gestion.entity.Proprietaire;
 import com.intiformation.gestion.entity.Visite;
@@ -165,12 +166,7 @@ public class AgenceDAO implements IAgenceDAO {
 	}
 	//CRUD visite 
 
-	public int ajouterVisite(Visite v, int idBi) {
-		BienImmobilier bi = em.find(BienImmobilier.class, idBi);
-		v.setBienImmobilier(bi);
-		em.persist(v);
-		return v.getId();
-	}
+	
 
 	public List<Visite> getVisiteByAgent(int idAgent) {
 		Query query = em.createQuery("SELECT v  from visite v where v.agent.id= ?1");
@@ -182,6 +178,16 @@ public class AgenceDAO implements IAgenceDAO {
 		Query query = em.createQuery("SELECT v  from visite v where v.bienImmobilier.id= ?1");
 		query.setParameter(1, idBI);
 		return query.getResultList();
+	}
+	public int ajouterVisite(Visite v, int idBI, int idAgent, int idClient) {
+		BienImmobilier bi = em.find(BienImmobilier.class, idBI);
+		v.setBienImmobilier(bi);
+		Agent agent=em.find(Agent.class, idAgent);
+		v.setAgent(agent);
+		Client client=em.find(Client.class, idClient);
+		v.setClient(client);
+		em.persist(v);
+		return v.getId();
 	}
 
 	//CRUD CS Acheter
@@ -232,6 +238,26 @@ public class AgenceDAO implements IAgenceDAO {
 		Query query = em.createQuery("SELECT c  from class c where c.code=?1");
 		query.setParameter(1, code);
 		return query.getResultList();
+	}
+
+	
+	public String creerContrat(Contrat c, int idBI, int idAgent, int idClient) {
+		BienImmobilier bi = em.find(BienImmobilier.class, idBI);
+		c.setBienImmobilier(bi);
+		Agent agent=em.find(Agent.class, idAgent);
+		c.setAgent(agent);
+		Client client=em.find(Client.class, idClient);
+		c.setClient(client);
+		em.persist(c);
+		return c.getRefContrat();
+	}
+
+	public List <Contrat> getContratByClientWithRef(int idAgent, String motClef) {
+		Query query = em.createQuery("SELECT c from contrat c where c.agent.id=?1 and c.refContrat LIKE :motClef");
+		query.setParameter(1, idAgent);
+		query.setParameter("motClef", "%"+motClef+"%");
+		return query.getResultList();
+		
 	}
 
 

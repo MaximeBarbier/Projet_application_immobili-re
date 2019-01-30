@@ -14,6 +14,7 @@ import com.intiformation.gestion.entity.Agent;
 import com.intiformation.gestion.entity.BienImmobilier;
 import com.intiformation.gestion.entity.ClasseStd;
 import com.intiformation.gestion.entity.Client;
+import com.intiformation.gestion.entity.Contrat;
 import com.intiformation.gestion.entity.Louer;
 import com.intiformation.gestion.entity.Proprietaire;
 import com.intiformation.gestion.entity.Visite;
@@ -189,11 +190,10 @@ public class AgenceMetier implements IAgenceMetier{
 	}
 	
 	//CRUD visite
-	
 	@Transactional
-	public int ajouterVisite(Visite v, int idBi) {
+	public int ajouterVisite(Visite v, int idBI, int idAgent, int idClient) {
 		
-		return agenceDAO.ajouterVisite(v, idBi);
+		return agenceDAO.ajouterVisite(v, idBI, idAgent, idClient);
 	}
 	@Transactional(readOnly=true)
 	public List<Visite> getVisiteByAgent(int idAgent) {
@@ -204,6 +204,18 @@ public class AgenceMetier implements IAgenceMetier{
 	public List<Visite> getVisiteByBienImmo(int idBI) {
 		
 		return agenceDAO.getVisiteByBienImmo(idBI);
+	}
+
+	//CRUD CONTRAT 
+	@Transactional
+	public String creerContrat(Contrat c, int idBI, int idAgent, int idClient) {
+		
+		return agenceDAO.creerContrat(c, idBI, idAgent, idClient);
+	}
+	@Transactional(readOnly=true)
+	public List<Contrat> getContratByClientWithRef(int idAgent, String ref) {
+		
+		return agenceDAO.getContratByClientWithRef(idAgent, ref);
 	}
 
 	
