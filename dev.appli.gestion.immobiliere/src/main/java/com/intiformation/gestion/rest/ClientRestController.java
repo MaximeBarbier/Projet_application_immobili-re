@@ -41,6 +41,11 @@ public class ClientRestController {
 		return agenceMetier.listClients();
 	}//fin getAllClients
 	
+	@RequestMapping(value="/listeClient/{immoId}/{code}",method=RequestMethod.GET)
+	public List<Client> getClientById (@PathVariable("immoId")int idBien, @PathVariable("code")String code ) {
+		return agenceMetier.getClientByBienImmobilier(idBien, code);
+		
+	}
 	/**
 	 * getClientsById
 	 * @return
