@@ -37,6 +37,10 @@ public class BienAAcheter extends BienImmobilier {
 		this.etat = etat;
 	}
 
+	public BienAAcheter() {
+		super();
+	}
+
 	public double getprixAchatDemandeDemande() {
 		return prixAchatDemande;
 	}
@@ -51,6 +55,14 @@ public class BienAAcheter extends BienImmobilier {
 
 	public void setEtat(String etat) {
 		this.etat = etat;
+	}
+
+	public double getPrixAchatDemande() {
+		return prixAchatDemande;
+	}
+
+	public void setPrixAchatDemande(double prixAchatDemande) {
+		this.prixAchatDemande = prixAchatDemande;
 	}
 
 	@Override

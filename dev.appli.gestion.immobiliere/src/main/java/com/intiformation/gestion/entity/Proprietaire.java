@@ -18,8 +18,7 @@ public class Proprietaire extends Personne {
 	@Column(name="telephone_travail")
 	private String telephoneTravail;
 	
-	@OneToMany(mappedBy="proprietaire", fetch=FetchType.LAZY)
-	@JsonIgnore
+	@OneToMany(mappedBy="proprietaire", fetch=FetchType.EAGER)
 	private List<BienImmobilier> listeBiens;
 
 	/* CTORS */

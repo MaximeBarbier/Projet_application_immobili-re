@@ -54,6 +54,10 @@ public class BienALouer extends BienImmobilier{
 		this.garniture = garniture;
 	}
 
+	public BienALouer() {
+		super();
+	}
+
 	public double getMontantCaution() {
 		return montantCaution;
 	}

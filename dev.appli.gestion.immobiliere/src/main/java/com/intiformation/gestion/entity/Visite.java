@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,15 +30,15 @@ public class Visite implements Serializable{
 	@Column(name="horaire_visite")
 	private Date horaireVisite;
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="agent_id", referencedColumnName="id_agent")
 	private Agent agent;
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="client_id", referencedColumnName="id_personne")
 	private Client client;
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="bien_id", referencedColumnName="id_bien")
 	private BienImmobilier bienImmobilier;
 	

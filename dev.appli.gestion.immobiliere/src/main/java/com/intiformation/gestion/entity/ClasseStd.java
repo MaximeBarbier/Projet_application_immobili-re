@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
@@ -13,6 +14,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.Proxy;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity(name="class")
 @Table(name="classes_standards")
@@ -37,10 +40,11 @@ public class ClasseStd implements Serializable{
 	@Column(name="superficie_minimum")
 	private double superficieMin;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="classeStd")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="classeStd", fetch=FetchType.LAZY)
+	@JsonIgnore
 	private List<BienImmobilier> listeBienImmobiliers;
 	
-	@ManyToMany(cascade = CascadeType.ALL, mappedBy="listeClasses")
+	@ManyToMany(cascade = CascadeType.ALL, mappedBy="listeClasses", fetch=FetchType.EAGER)
 	private List<Client> listeClients;
 	
 	/*____________________________________________ctor__________________________________________________*/

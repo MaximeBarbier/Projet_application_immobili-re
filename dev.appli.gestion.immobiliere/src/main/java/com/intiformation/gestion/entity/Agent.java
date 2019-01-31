@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -41,10 +42,10 @@ public class Agent implements Serializable{
 	@Column(name="password")
 	private String password;
 	
-	@OneToMany(mappedBy="agent")
+	@OneToMany(mappedBy="agent", fetch=FetchType.EAGER)
 	private List<Visite> listeVisites;
 	
-	@OneToMany(mappedBy="agent")
+	@OneToMany(mappedBy="agent", fetch=FetchType.EAGER)
 	private List<Contrat> listeContrats;
 	
 	/*____________________________________________ctor__________________________________________________*/

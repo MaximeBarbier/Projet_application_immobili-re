@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -25,11 +26,11 @@ public class Contrat implements Serializable {
 	@Column(name="date_achat")
 	private Date dateAchat;
 	
-	@OneToOne
+	@OneToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="client_id", referencedColumnName="id_personne")
 	private Client client;
 	
-	@OneToOne
+	@OneToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="bien_id", referencedColumnName="id_bien")
 	private BienImmobilier bienImmobilier;
 	

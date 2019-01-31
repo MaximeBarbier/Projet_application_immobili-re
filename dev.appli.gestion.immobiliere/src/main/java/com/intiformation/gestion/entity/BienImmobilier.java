@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,6 +18,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity(name="bienImmobilier")
 @Table(name="biens_immobiliers")
@@ -36,7 +39,7 @@ public class BienImmobilier implements Serializable{
 	@Column(name="statut")
 	private boolean statut;
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="classestd_id", referencedColumnName="id_classestd")
 	private ClasseStd classeStd;
 	
@@ -58,14 +61,14 @@ public class BienImmobilier implements Serializable{
 	@Column(name="revenu_cadastral")
 	private double revenuCadastral;
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="proprietaire_id", referencedColumnName="id_personne")
 	private Proprietaire proprietaire;
 	
-	@OneToMany(mappedBy="bienImmobilier")
+	@OneToMany(mappedBy="bienImmobilier", fetch=FetchType.EAGER)
 	private List<Visite> listeVisites;
 	
-	@OneToOne(mappedBy="bienImmobilier")
+	@OneToOne(mappedBy="bienImmobilier", fetch=FetchType.EAGER)
 	private Contrat contrat;
 	
 	/* ctors */
