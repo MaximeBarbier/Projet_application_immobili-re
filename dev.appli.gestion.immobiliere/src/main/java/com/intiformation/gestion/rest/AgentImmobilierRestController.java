@@ -86,5 +86,11 @@ public class AgentImmobilierRestController {
 
 		agenceMetier.supprimerAI(id);
 	}// fin deleteClient
+	
+	@RequestMapping(value = "/listeAgents/{agentByusername}/{agentBypassword}", method = RequestMethod.GET)
+	public Agent getAgentByPassnuser(@PathVariable("agentByusername") String username, @PathVariable("agentBypassword") String password) {
+		return agenceMetier.getUsernPass(username, password);
+
+	}// getAgentpassnUserna
 
 }// end class
