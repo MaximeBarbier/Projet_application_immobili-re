@@ -245,6 +245,12 @@ public class AgenceMetier implements IAgenceMetier {
 		return agenceDAO.getUsernPass(username, password);
 	}
 
+	@Transactional(readOnly=true)
+	public List<Client> getClientByBienImmobilier(int idBien, String code) {
+		
+		return agenceDAO.getClientByBienImmobilier(idBien, code);
+	}
+
 	
 
 	

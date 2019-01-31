@@ -50,17 +50,17 @@ public class VisitRestController {
 	public List<Visite>getVisiteByBienImmo (@PathVariable("visiteByBienImmo")int id) {
 		return agenceMetier.getVisiteByBienImmo(id);	
 		
-	}//getClasseStdById
+	}
 	
 	/**
 	 * addClasseStd
 	 */
-//    @RequestMapping(value = "/createVisit/{visiteByAgent}", method = RequestMethod.POST)
-//	public void addVisit(@PathVariable("visiteByAgent")int id, @RequestBody Visite visite  ) {
-//		agenceMetier.ajouterVisite(visite, id);
-//		
-//		
-//	}//fin addClient
+    @RequestMapping(value = "/createVisit", method = RequestMethod.POST)
+	public void addVisit( @RequestBody Visite visite  ) {
+	agenceMetier.ajouterVisite(visite, visite.getBienImmobilier().getId(), visite.getAgent().getId(), visite.getClient().getId());
+		
+		
+	}
 	
 
 }//end class

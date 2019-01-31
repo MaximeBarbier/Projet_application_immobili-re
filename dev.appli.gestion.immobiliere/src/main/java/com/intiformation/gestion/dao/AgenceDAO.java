@@ -269,6 +269,20 @@ public class AgenceDAO implements IAgenceDAO {
 		return query.getResultList();
 		
 	}
+
+	
+	public List<Client> getClientByBienImmobilier(int idBien, String code) {
+		ClasseStd classSTD= em.find(ClasseStd.class, code);
+		Query query = em.createQuery("SELECT b.class.id from bienImmobilier b  where b.id=?1 ");
+		query.setParameter(1, idBien);
+		classSTD = (ClasseStd) query.getSingleResult();
+		
+		Query query2= em.createQuery("SELECT c.client from class c  where c.id=?1 ");
+		query2.setParameter(1, classSTD);
+		
+		List<Client>listeClients=query2.getResultList();
+		return listeClients;
+	}
 	
 	
 	

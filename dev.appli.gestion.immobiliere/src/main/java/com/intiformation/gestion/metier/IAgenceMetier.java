@@ -63,6 +63,8 @@ public interface IAgenceMetier {
 		public void supprimerClient(int id);
 
 		public void modifierClient(Client c);
+		
+		public List<Client> getClientByBienImmobilier( int idBien, String code );
 
 		//CRUD Classe Standard 
 		
