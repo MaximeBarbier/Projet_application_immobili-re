@@ -51,6 +51,10 @@ public interface IAgenceMetier {
 		public List<BienImmobilier> getListBIByIdPropietaire(int idProp);
 		
 		public List<BienImmobilier> getListBIByClassSt(String code);
+		
+		public List<BienImmobilier> getListBIvenduByAgent(int idAgent);
+		
+		public List<BienImmobilier> getListdesBiendispoByClassSTD(int idClassSTD);
 
 		// CRUD Client
 
@@ -96,6 +100,10 @@ public interface IAgenceMetier {
 		public List<Visite> getVisiteByAgent(int idAgent);
 
 		public List<Visite> getVisiteByBienImmo(int idBI);
+		
+		public void supprimerVisite(int idV);
+		
+		public void modifierVisite(Visite v);
 
 		// CRUD Contrat
 		

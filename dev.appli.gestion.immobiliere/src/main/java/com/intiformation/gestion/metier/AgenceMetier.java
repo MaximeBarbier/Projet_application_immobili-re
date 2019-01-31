@@ -60,7 +60,7 @@ public class AgenceMetier implements IAgenceMetier {
 	// CRUD bien immobilier
 
 	
-	@Transactional
+	@Transactional(readOnly=true)
 	public BienImmobilier getBibyId(int id) {
 
 		return agenceDAO.getBibyId(id);
@@ -72,24 +72,35 @@ public class AgenceMetier implements IAgenceMetier {
 
 	}
 	
-	@Transactional
+	@Transactional(readOnly=true)
 	public List<BienImmobilier> listBi() {
 		
 		return agenceDAO.listBi();
 	}
 
-	@Transactional
+	@Transactional(readOnly=true)
 	public List<BienImmobilier> getListBIByIdPropietaire(int idProp) {
 
 		return agenceDAO.getListBIByIdPropietaire(idProp);
 	}
 
-	@Transactional
+	@Transactional(readOnly=true)
 	public List<BienImmobilier> getListBIByClassSt(String code) {
 
 		return agenceDAO.getListBIByClassSt(code);
 	}
 	
+	@Transactional(readOnly=true)
+	public List<BienImmobilier> getListBIvenduByAgent(int idAgent) {
+		
+		return agenceDAO.getListBIvenduByAgent(idAgent);
+	}
+	
+	@Transactional(readOnly=true)
+	public List<BienImmobilier> getListdesBiendispoByClassSTD(int idClassSTD) {
+		
+		return agenceDAO.getListdesBiendispoByClassSTD(idClassSTD);
+	}
 	//CRUD bien à LOUER 
 	@Transactional
 	public void ajouterBiALouer(BienALouer biL, int idProp) {
@@ -155,7 +166,13 @@ public class AgenceMetier implements IAgenceMetier {
 		agenceDAO.modifierClient(c);
 
 	}
-
+	
+	@Transactional(readOnly=true)
+	public List<Client> getClientByBienImmobilier(int idBien, String code) {
+		
+		return agenceDAO.getClientByBienImmobilier(idBien, code);
+	}
+	
 	// CRUD classe std
 	@Transactional
 	public List<ClasseStd> listCSByClient(int idClient) {
@@ -225,6 +242,18 @@ public class AgenceMetier implements IAgenceMetier {
 
 		return agenceDAO.getVisiteByBienImmo(idBI);
 	}
+	
+	@Transactional
+	public void supprimerVisite(int idV) {
+		agenceDAO.supprimerVisite(idV);
+		
+	}
+
+	@Transactional
+	public void modifierVisite(Visite v) {
+		agenceDAO.modifierVisite(v);
+		
+	}
 
 	// CRUD CONTRAT
 	@Transactional
@@ -245,11 +274,13 @@ public class AgenceMetier implements IAgenceMetier {
 		return agenceDAO.getUsernPass(username, password);
 	}
 
-	@Transactional(readOnly=true)
-	public List<Client> getClientByBienImmobilier(int idBien, String code) {
-		
-		return agenceDAO.getClientByBienImmobilier(idBien, code);
-	}
+	
+
+	
+
+	
+
+	
 
 	
 

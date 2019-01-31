@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.intiformation.gestion.entity.Proprietaire;
 import com.intiformation.gestion.entity.Visite;
 import com.intiformation.gestion.metier.IAgenceMetier;
 
@@ -61,6 +63,25 @@ public class VisitRestController {
 		
 		
 	}
+    
+
+    @RequestMapping(value="/listeVisite/{visiteId}",method = RequestMethod.PUT)
+    public void updateVisite (@RequestBody Visite visite) {
+    	
+    	agenceMetier.modifierVisite(visite);
+		
+    	
+    }
+
+    
+    
+    @RequestMapping(value="/listeVisite/{visiteId}",method = RequestMethod.DELETE)
+    public void deleteProprio(@PathVariable("visiteId")int id){
+    	
+    agenceMetier.supprimerVisite(id);
+    }
+    
+
 	
 
 }//end class

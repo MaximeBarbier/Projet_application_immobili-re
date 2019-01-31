@@ -97,6 +97,16 @@ public class AgenceDAO implements IAgenceDAO {
 		return query.getResultList();
 	}
 	
+	public List<BienImmobilier> getListBIvenduByAgent(int idAgent) {
+		Query query = em.createQuery("select c.bienImmobilier from contrat c where c.agent.id=?1");
+		query.setParameter(1,idAgent);
+		return query.getResultList();
+	}
+	public List<BienImmobilier> getListdesBiendispoByClassSTD(int idClassSTD){
+		Query query = em.createQuery("select b from bienImmobilier b where b.statut=true and b.class.id=?1");
+		query.setParameter(1,idClassSTD);
+		return query.getResultList();
+	}
 	// CRUD BIEN IMMOBILIER A ACHETER 
 		public void ajouterBiAAcheter(BienAAcheter biA, int idProp) {
 			Proprietaire p = em.find (Proprietaire.class, idProp);
@@ -164,7 +174,18 @@ public class AgenceDAO implements IAgenceDAO {
 
 	}
 
-	
+	public List<Client> getClientByBienImmobilier(int idBien, String code) {
+		ClasseStd classSTD= em.find(ClasseStd.class, code);
+		Query query = em.createQuery("SELECT b.class.id from bienImmobilier b  where b.id=?1 ");
+		query.setParameter(1, idBien);
+		classSTD = (ClasseStd) query.getSingleResult();
+		
+		Query query2= em.createQuery("SELECT c.client from class c  where c.id=?1 ");
+		query2.setParameter(1, classSTD);
+		
+		List<Client>listeClients=query2.getResultList();
+		return listeClients;
+	}
 
 	//CRUD Agent 
 	public int ajouterAI(Agent ai) {
@@ -230,6 +251,20 @@ public class AgenceDAO implements IAgenceDAO {
 		return v.getId();
 	}	
 	
+	
+	public void supprimerVisite(int idV) {
+		Visite visite=em.find(Visite.class, idV);
+		em.remove(visite);
+		
+	}
+
+
+	public void modifierVisite(Visite v) {
+		em.merge(v);
+		
+	}
+
+	
 	//CRUD Class std
 	public List<ClasseStd> listCSByClient(int idClient) {
 		Query query = em.createQuery("SELECT cs from class cs where cs.client.id= ?1");
@@ -271,18 +306,10 @@ public class AgenceDAO implements IAgenceDAO {
 	}
 
 	
-	public List<Client> getClientByBienImmobilier(int idBien, String code) {
-		ClasseStd classSTD= em.find(ClasseStd.class, code);
-		Query query = em.createQuery("SELECT b.class.id from bienImmobilier b  where b.id=?1 ");
-		query.setParameter(1, idBien);
-		classSTD = (ClasseStd) query.getSingleResult();
-		
-		Query query2= em.createQuery("SELECT c.client from class c  where c.id=?1 ");
-		query2.setParameter(1, classSTD);
-		
-		List<Client>listeClients=query2.getResultList();
-		return listeClients;
-	}
+	
+
+	
+	
 	
 	
 	
