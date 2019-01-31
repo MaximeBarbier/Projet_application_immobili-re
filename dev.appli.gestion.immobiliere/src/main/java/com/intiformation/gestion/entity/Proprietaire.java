@@ -16,7 +16,7 @@ public class Proprietaire extends Personne {
 
 	/* Déclaration des champs de la classe */
 	@Column(name="telephone_travail")
-	private long telephoneTravail;
+	private String telephoneTravail;
 	
 	@OneToMany(mappedBy="proprietaire", fetch=FetchType.LAZY)
 	@JsonIgnore
@@ -28,25 +28,25 @@ public class Proprietaire extends Personne {
 	}
 
 	public Proprietaire(String nom, String adresse, String codePostal, String localite, String telephonePrive,
-			long telephoneTravail, List<BienImmobilier> listeBiens) {
+			String telephoneTravail, List<BienImmobilier> listeBiens) {
 		super(nom, adresse, codePostal, localite, telephonePrive);
 		this.telephoneTravail = telephoneTravail;
 		this.listeBiens = listeBiens;
 	}
 
 	public Proprietaire(int id, String nom, String adresse, String codePostal, String localite, String telephonePrive,
-			long telephoneTravail, List<BienImmobilier> listeBiens) {
+			String telephoneTravail, List<BienImmobilier> listeBiens) {
 		super(id, nom, adresse, codePostal, localite, telephonePrive);
 		this.telephoneTravail = telephoneTravail;
 		this.listeBiens = listeBiens;
 	}
 
 	/* GETTERS AND SETTERS */
-	public long getTelephoneTravail() {
+	public String getTelephoneTravail() {
 		return telephoneTravail;
 	}
 
-	public void setTelephoneTravail(long telephoneTravail) {
+	public void setTelephoneTravail(String telephoneTravail) {
 		this.telephoneTravail = telephoneTravail;
 	}
 
