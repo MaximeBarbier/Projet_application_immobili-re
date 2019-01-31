@@ -65,7 +65,8 @@ public class BienImmobilier implements Serializable{
 	@JoinColumn(name="proprietaire_id", referencedColumnName="id_personne")
 	private Proprietaire proprietaire;
 	
-	@OneToMany(mappedBy="bienImmobilier", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="bienImmobilier", fetch=FetchType.LAZY)
+	@JsonIgnore
 	private List<Visite> listeVisites;
 	
 	@OneToOne(mappedBy="bienImmobilier", fetch=FetchType.EAGER)

@@ -42,10 +42,10 @@ public class Agent implements Serializable{
 	@Column(name="password")
 	private String password;
 	
-	@OneToMany(mappedBy="agent", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="agent")
 	private List<Visite> listeVisites;
 	
-	@OneToMany(mappedBy="agent", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="agent")
 	private List<Contrat> listeContrats;
 	
 	/*____________________________________________ctor__________________________________________________*/
