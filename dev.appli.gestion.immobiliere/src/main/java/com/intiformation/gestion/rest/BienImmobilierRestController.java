@@ -72,34 +72,34 @@ public class BienImmobilierRestController {
 
 	}
 
-	@RequestMapping(value = "/listBienImmobilier/{immoId}", method = RequestMethod.PUT)
+	@RequestMapping(value = "/listBienAAcheter/{immoId}", method = RequestMethod.PUT)
 	public void updateBIAA(@RequestBody BienAAcheter biAA) {
 
 		agenceMetier.modifierBiAAcheter(biAA);
 
 	}
 
-	@RequestMapping(value = "/listBienImmobilier", method = RequestMethod.GET)
+	@RequestMapping(value = "/listBienAAcheter", method = RequestMethod.GET)
 	public List<BienAAcheter> getListBiAA() {
 		return agenceMetier.getListBiAAcheter();
 	}
 
 	// BI à LOUER
 
-	@RequestMapping(value = "/createBIAAcheter", method = RequestMethod.POST)
+	@RequestMapping(value = "/createBIALouer", method = RequestMethod.POST)
 	public void addBIAL(@RequestBody BienALouer biAL) {
 		agenceMetier.ajouterBiALouer(biAL, biAL.getProprietaire().getId());
 
 	}
 
-	@RequestMapping(value = "/listBienImmobilier/{immoId}", method = RequestMethod.PUT)
+	@RequestMapping(value = "/listBienALouer/{immoId}", method = RequestMethod.PUT)
 	public void updateBIAL(@RequestBody BienALouer biAL) {
 
 		agenceMetier.modifierBiALouer(biAL);
 
 	}
 
-	@RequestMapping(value = "/listBienImmobilier", method = RequestMethod.GET)
+	@RequestMapping(value = "/listBienALouer", method = RequestMethod.GET)
 	public List<BienALouer> getListBiAL() {
 		return agenceMetier.getListBiALouer();
 	}
