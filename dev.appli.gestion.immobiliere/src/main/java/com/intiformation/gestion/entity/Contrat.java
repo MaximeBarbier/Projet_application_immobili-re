@@ -34,6 +34,7 @@ public class Contrat implements Serializable {
 	@JoinColumn(name="bien_id", referencedColumnName="id_bien")
 	private BienImmobilier bienImmobilier;
 	
+	@OneToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="agent_id", referencedColumnName="id_agent")
 	private Agent agent;
 	

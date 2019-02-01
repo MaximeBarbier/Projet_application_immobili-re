@@ -212,6 +212,14 @@ public class BienImmobilier implements Serializable{
 		this.contrat = contrat;
 	}
 
+	public String getModeOffre() {
+		return modeOffre;
+	}
+
+	public void setModeOffre(String modeOffre) {
+		this.modeOffre = modeOffre;
+	}
+
 	@Override
 	public String toString() {
 		return "BienImmobilier [id=" + id + ", statut=" + statut + ", classeStd=" + classeStd + ", dateSoumission="

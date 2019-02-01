@@ -92,7 +92,7 @@ public class AgenceDAO implements IAgenceDAO {
 
 	public List<BienImmobilier> getListBIByClassSt(String code) {
 		
-		Query query = em.createQuery("SELECT bi  from bienImmobilier bi where bi.class.code= ?1");
+		Query query = em.createQuery("SELECT bi  from bienImmobilier bi where bi.classeStd.code= ?1");
 		query.setParameter(1, code);
 		return query.getResultList();
 	}
@@ -121,7 +121,7 @@ public class AgenceDAO implements IAgenceDAO {
 		}
 
 		public List<BienAAcheter> getListBiAAcheter() {
-			Query query=em.createQuery("select bi from bienImmobilier where bi.modeOffre='aacheter'");
+			Query query=em.createQuery("select bi from bienImmobilier bi where bi.modeOffre='aacheter'");
 			
 			return query.getResultList();
 		}
@@ -141,7 +141,7 @@ public class AgenceDAO implements IAgenceDAO {
 		}
 
 		public List<BienALouer> getListBiALouer() {
-			Query query=em.createQuery("select bi from bienImmobilier where bi.modeOffre='alouer'");
+			Query query=em.createQuery("select bi from bienImmobilier bi where bi.modeOffre='alouer'");
 			
 			return query.getResultList();
 			

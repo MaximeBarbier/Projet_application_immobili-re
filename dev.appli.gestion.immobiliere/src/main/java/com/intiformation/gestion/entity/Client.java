@@ -14,6 +14,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Proxy;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity(name="client")
 @Table(name="clients")
 @Proxy(lazy = false)
@@ -25,7 +27,8 @@ public class Client extends Personne{
 			   inverseJoinColumns = {@JoinColumn(name = "classestd_id")})
 	private List<ClasseStd> listeClasses;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy="client")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="client", fetch=FetchType.LAZY)
+	@JsonIgnore
 	private List<Visite> listeVisites;
 	
 	@OneToOne(cascade = CascadeType.ALL, mappedBy="client")

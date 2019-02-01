@@ -50,22 +50,22 @@ public class BienImmobilierRestController {
 		agenceMetier.supprimerBi(id);
 	}
 
-	@RequestMapping(value = "/listBienImmobilier/{BIByIdProprietaire}", method = RequestMethod.GET)
+	@RequestMapping(value = "/listBienImmobilierParProprio/{BIByIdProprietaire}", method = RequestMethod.GET)
 	public List<BienImmobilier> getListBIByIdPropietaire(@PathVariable("BIByIdProprietaire") int idProp) {
 		return agenceMetier.getListBIByIdPropietaire(idProp);
 	}
 
-	@RequestMapping(value = "/listBienImmobilier/{BIByIdClassStd}", method = RequestMethod.GET)
+	@RequestMapping(value = "/listBienImmobilierParClass/{BIByIdClassStd}", method = RequestMethod.GET)
 	public List<BienImmobilier> getListBIByClassStd(@PathVariable("BIByIdClassStd") String code) {
 		return agenceMetier.getListBIByClassSt(code);
 	}
 
-	@RequestMapping(value = "/listBienImmobilier/{BIById}", method = RequestMethod.GET)
+	@RequestMapping(value = "/getBienImmobilier/{BIById}", method = RequestMethod.GET)
 	public BienImmobilier getBibyId(@PathVariable("BIById") int id) {
 		return agenceMetier.getBibyId(id);
 	}
 
-	@RequestMapping(value = "/listBienImmobilier/{idA}", method = RequestMethod.GET)
+	@RequestMapping(value = "/listBienImmobilierVendu/{idA}", method = RequestMethod.GET)
 	public List<BienImmobilier> getBivendusbyAgent(@PathVariable("idA") int id) {
 		return agenceMetier.getListBIvenduByAgent(id);
 	}
