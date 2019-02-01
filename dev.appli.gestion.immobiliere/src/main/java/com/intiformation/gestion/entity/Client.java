@@ -14,11 +14,14 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Proxy;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity(name="client")
 @Table(name="clients")
 @Proxy(lazy = false)
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Client extends Personne{
 	
 	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)

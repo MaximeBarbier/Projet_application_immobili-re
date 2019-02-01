@@ -102,8 +102,8 @@ public class AgenceDAO implements IAgenceDAO {
 		query.setParameter(1,idAgent);
 		return query.getResultList();
 	}
-	public List<BienImmobilier> getListdesBiendispoByClassSTD(int idClassSTD){
-		Query query = em.createQuery("select b from bienImmobilier b where b.statut=true and b.class.id=?1");
+	public List<BienImmobilier> getListdesBiendispoByClassSTD(String idClassSTD){
+		Query query = em.createQuery("select b from bienImmobilier b where b.statut=true and classeStd.code= ?1");
 		query.setParameter(1,idClassSTD);
 		return query.getResultList();
 	}

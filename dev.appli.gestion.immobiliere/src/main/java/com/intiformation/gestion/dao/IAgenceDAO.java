@@ -54,7 +54,7 @@ public interface IAgenceDAO {
 	
 	public List<BienImmobilier> getListBIvenduByAgent(int idAgent);
 	
-	public List<BienImmobilier> getListdesBiendispoByClassSTD(int idClassSTD);
+	public List<BienImmobilier> getListdesBiendispoByClassSTD(String idClassSTD);
 
 	// CRUD Client
 

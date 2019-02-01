@@ -97,7 +97,7 @@ public class AgenceMetier implements IAgenceMetier {
 	}
 	
 	@Transactional(readOnly=true)
-	public List<BienImmobilier> getListdesBiendispoByClassSTD(int idClassSTD) {
+	public List<BienImmobilier> getListdesBiendispoByClassSTD(String idClassSTD) {
 		
 		return agenceDAO.getListdesBiendispoByClassSTD(idClassSTD);
 	}

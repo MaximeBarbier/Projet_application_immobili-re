@@ -70,9 +70,9 @@ public class BienImmobilierRestController {
 		return agenceMetier.getListBIvenduByAgent(id);
 	}
 	
-	@RequestMapping(value = "/listBienImmobilier/{idC}", method = RequestMethod.GET)
-	public List<BienImmobilier> getBidispobyCSTD(@PathVariable("idC") int id) {
-		return agenceMetier.getListdesBiendispoByClassSTD(id);
+	@RequestMapping(value = "/listBienImmobilierdispobycstd/{idC}", method = RequestMethod.GET)
+	public List<BienImmobilier> getBidispobyCSTD(@PathVariable("idC") String idClassSTD) {
+		return agenceMetier.getListdesBiendispoByClassSTD( idClassSTD);
 	}
 
 	// BI à ACHETER
